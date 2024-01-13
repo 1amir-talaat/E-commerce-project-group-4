@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* box-sizing: border-box; */
+}
+
+a {
+  text-decoration: none;
+  color: white !important;
+}
+
+ul {
+  list-style: none;
+}
+
+footer {
+  background-color: var(--secound-color);
+}
+
+
+
+.footer {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.link {
+  cursor: pointer;
+}
