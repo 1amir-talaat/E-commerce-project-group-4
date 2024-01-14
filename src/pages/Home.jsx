@@ -237,23 +237,42 @@ function Home() {
           </div>
 
           <Swiper
-            spaceBetween={20}
-            slidesPerView={"auto"}
+            spaceBetween={10}
+            slidesPerView={6}
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
+            }}
+            breakpoints={{
+              0: {
+                slidesPerView: 2,
+              },
+              660: {
+                slidesPerView: 3,
+              },
+              990: {
+                slidesPerView: 4,
+              },
+              1270: {
+                slidesPerView: 5,
+              },
+              1470: {
+                slidesPerView: 6,
+              },
             }}
           >
             {[...Array(15)].map(() => {
               return (
                 <SwiperSlide className="swiper-card">
-                  <Card
-                    data={{
-                      brand: "Havells",
-                      title: "Kids headphones bulk 10 pack multi colored for students",
-                      rate: "2.4",
-                      price: 200,
-                    }}
-                  />
+                  <div>
+                    <Card
+                      data={{
+                        brand: "Havells",
+                        title: "Kids headphones bulk 10 pack multi colored for students",
+                        rate: "2.4",
+                        price: 200,
+                      }}
+                    />
+                  </div>
                 </SwiperSlide>
               );
             })}

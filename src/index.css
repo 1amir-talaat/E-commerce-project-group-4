@@ -389,10 +389,6 @@
   border-right: 1px solid #ededed89;
 }
 
-.swiper-slide {
-  width: auto !important;
-}
-
 .swiper-arrow {
   color: rgba(0, 0, 0, 0.566);
 }
