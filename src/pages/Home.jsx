@@ -5,6 +5,7 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import Card from "../components/card/Card";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SpecialProductsCard from "../components/Special Products Card/SpecialProductsCard";
+import BannerCard from "../components/BannerCard/BannerCard";
 
 function Home() {
   const swiperRef = useRef();
@@ -278,7 +279,81 @@ function Home() {
         </div>
       </section>
       {/* end Featured Collection */}
+
+      {/* start Banner section */}
+      <section className="home-wrapper-2 py-5">
+        <div className="container">
+          <Swiper
+            spaceBetween={10}
+            slidesPerView={4}
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+              },
+              480: {
+                slidesPerView: 2,
+              },
+              660: {
+                slidesPerView: 3,
+              },
+              1270: {
+                slidesPerView: 4,
+              },
+            }}
+          >
+            <SwiperSlide className="p-1">
+              <BannerCard
+                data={{
+                  text: "white",
+                  label: "big screen",
+                  subTitle: "Smart Watch Series 7",
+                  title: "From $399or $16.62/mo. for 24 mo.*",
+                  img: "./src/assets/images/subbanner-01.webp",
+                }}
+              />
+            </SwiperSlide>
+            <SwiperSlide className="p-1">
+              <BannerCard
+                data={{
+                  text: "dark",
+                  label: "Studio Display",
+                  subTitle: "600 nits of brightness.",
+                  title: "27-inch 5K Retina display",
+                  img: "./src/assets/images/subbanner-02.webp",
+                }}
+              />
+            </SwiperSlide>
+            <SwiperSlide className="p-1">
+              <BannerCard
+                data={{
+                  text: "dark",
+                  label: "smart phones",
+                  subTitle: "Smartphone 13 Pro.",
+                  title: "Now in Green. From $999.00 or $41.62/mo. for 24 mo. Footnote*",
+                  img: "./src/assets/images/subbanner-03.webp",
+                }}
+              />
+            </SwiperSlide>
+            <SwiperSlide className="p-1">
+              <BannerCard
+                data={{
+                  text: "dark",
+                  label: "home speakers",
+                  subTitle: "Room-filling sound.",
+                  title: "From $699 or $116.58/mo. for 12 mo.*",
+                  img: "./src/assets/images/subbanner-04.webp ",
+                }}
+              />
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      </section>
+      {/* end banner section */}
       {/* start Special Products  */}
+
       <section className="home-wrapper-2 py-5">
         <div className="container">
           <div className="d-flex align-items-center justify-content-between mb-4">
@@ -309,9 +384,8 @@ function Home() {
           >
             {[...Array(15)].map(() => {
               return (
-                <SwiperSlide className="swiper-card" >
+                <SwiperSlide className="swiper-card">
                   <SpecialProductsCard
-                    className=""
                     data={{
                       brand: "Havells",
                       title: "Kids headphones bulk 10 pack multi colored for students",
