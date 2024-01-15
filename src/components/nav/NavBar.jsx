@@ -134,7 +134,7 @@ function Navbar() {
               </div>
             </div>
 
-            <div className="col-5 col-sm-8 col-xl-9  ps-4 d-flex align-items-center">
+            <div className="col-7 col-sm-8 col-xl-9  ps-4 d-flex align-items-center">
               <Swiper spaceBetween={50} slidesPerView={"auto"}>
                 <SwiperSlide className="swiper-item">Electronics</SwiperSlide>
                 <SwiperSlide className="swiper-item">Mobiles</SwiperSlide>

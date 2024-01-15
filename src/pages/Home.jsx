@@ -4,6 +4,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 import { MdArrowBackIosNew } from "react-icons/md";
 import Card from "../components/card/Card";
 import { Swiper, SwiperSlide } from "swiper/react";
+import SpecialProductsCard from "../components/Special Products Card/SpecialProductsCard";
 
 function Home() {
   const swiperRef = useRef();
@@ -97,7 +98,6 @@ function Home() {
         </div>
       </section>
       {/* End Landing Page*/}
-
       {/* Start Services */}
       <section className="px-0 p services py-3">
         <div className="container">
@@ -145,7 +145,6 @@ function Home() {
         </div>
       </section>
       {/* End Services */}
-
       {/* start section 3 */}
       <section className="categories-section home-wrapper-2 py-5">
         <div className="container">
@@ -224,7 +223,6 @@ function Home() {
         </div>
       </section>
       {/* end section 3 */}
-
       {/* start Featured Collection */}
       <section className="home-wrapper-2 py-5">
         <div className="container">
@@ -280,6 +278,62 @@ function Home() {
         </div>
       </section>
       {/* end Featured Collection */}
+      {/* start Special Products  */}
+      <section className="home-wrapper-2 py-5">
+        <div className="container">
+          <div className="d-flex align-items-center justify-content-between mb-4">
+            <h3>Special Products</h3>
+            <div>
+              <MdArrowBackIosNew onClick={() => swiperRef.current.slidePrev()} className="swiper-arrow me-2" size={23} />
+              <MdArrowForwardIos onClick={() => swiperRef.current.slideNext()} className="swiper-arrow" size={23} />
+            </div>
+          </div>
+
+          <Swiper
+            spaceBetween={10}
+            slidesPerView={6}
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+              },
+              990: {
+                slidesPerView: 2,
+              },
+              1470: {
+                slidesPerView: 3,
+              },
+            }}
+          >
+            {[...Array(15)].map(() => {
+              return (
+                <SwiperSlide className="swiper-card" >
+                  <SpecialProductsCard
+                    className=""
+                    data={{
+                      brand: "Havells",
+                      title: "Kids headphones bulk 10 pack multi colored for students",
+                      rate: "2.4",
+                      price: 200,
+                    }}
+                  />
+                  <SpecialProductsCard
+                    data={{
+                      brand: "Havells",
+                      title: "Kids headphones bulk 10 pack multi colored for students",
+                      rate: "2.4",
+                      price: 200,
+                    }}
+                  />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
+      </section>
+      {/* end Special Products  */}
     </>
   );
 }

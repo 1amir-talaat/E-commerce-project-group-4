@@ -1,9 +1,7 @@
 .product-card {
-  /* max-width: 270px; */
   box-shadow: 0 0 10px #0000001a;
   border-radius: 10px;
   background: #fff;
-  min-height: 465px;
 }
 
 .product-img {
@@ -20,7 +18,6 @@
 .product-info {
   padding: 5px 20px 10px;
   text-align: left;
-  min-height: 156px;
   position: relative;
   overflow: hidden;
   float: left;
@@ -34,7 +31,7 @@
   margin: 0 0 12px;
 }
 
-.product-info .product-desc {
+.product-info .product-title {
   font-size: 15px;
   font-weight: 600;
   line-height: 17px;
@@ -46,7 +43,6 @@
   -webkit-box-orient: vertical;
   word-break: break-word;
   margin: 0 0 14px;
-  font-family: var(--font-body-family);
 }
 
 .product-info .product-rate {
@@ -62,15 +58,48 @@
   background-color: #fbcb83;
 }
 
-.product-hover .hide {
-  position: relative;
-  opacity: 0;
-  right: -18px;
-  top: 0;
-  transition: all 0.4s ease 0s;
+@media (min-width: 750px) {
+  .product-hover .hide {
+    position: relative;
+    opacity: 0;
+    right: -18px;
+    top: 0;
+    transition: all 0.4s ease 0s;
+  }
+
+  .product-card:hover .product-hover .hide {
+    opacity: 1;
+    right: 0;
+  }
 }
 
-.product-card:hover .product-hover .hide {
-  opacity: 1;
-  right: 0;
+@media (max-width: 750px) {
+  .card-icon {
+    width: 28px;
+    margin-bottom: 0 !important;
+  }
+
+  .product-hover {
+    right: -5px !important;
+  }
+
+  .product-info .product-brand {
+    font-size: 13px;
+    margin: 0 0 10px;
+  }
+
+  .product-info .product-title {
+    font-size: 15px;
+    line-height: 20px;
+    margin: 0 0 5px;
+  }
+
+  .product-info .product-rate {
+    margin-bottom: 10px;
+  }
+
+  .product-info .product-price {
+    font-size: 16px;
+    padding-bottom: 8px;
+  }
 }

@@ -1,12 +1,3 @@
-:root {
-  --main-color: #131921;
-  --secound-color: #232f3e;
-  --button-color: #f6bd69;
-  --button-color-hover: #fbcb83;
-  --color-3-hover: #ff9b18;
-  --color-3: #f08804;
-}
-
 .navbar {
   background-color: var(--main-color);
 }
