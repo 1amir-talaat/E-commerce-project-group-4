@@ -1,16 +1,32 @@
 import React, { useRef } from "react";
+import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Grid } from "swiper/modules";
 
 import { MdArrowForwardIos } from "react-icons/md";
 import { MdArrowBackIosNew } from "react-icons/md";
+
 import Card from "../components/card/Card";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SpecialProductsCard from "../components/Special Products Card/SpecialProductsCard";
+import SpecialProductsCard from "../components/SpecialProductsCard/SpecialProductsCard";
 import BannerCard from "../components/BannerCard/BannerCard";
-// import PopularProduct from "../components/popularProductSection/PopularProduct";
+
+import "swiper/css/grid";
+import "swiper/css";
+import products from "./temp-data.json";
 
 function Home() {
+  console.log(products);
   const FeaturedCollectionRef = useRef();
   const SpecialProductsRef = useRef();
+
+  const ProductList = ({ products }) => {
+    // Group products into pairs
+    const groupedProducts = [];
+    for (let i = 0; i < products.length; i += 2) {
+      const pair = [products[i], products[i + 1]];
+      groupedProducts.push(pair);
+    }
+  };
 
   return (
     <>
@@ -18,11 +34,7 @@ function Home() {
       <section className="landing-page py-5">
         <div className="container">
           <div className="row w-100">
-            <div
-              id="carouselExampleIndicators"
-              className="carousel slide col-lg-6 position-relative "
-              data-bs-ride="carousel"
-            >
+            <div id="carouselExampleIndicators" className="carousel slide col-lg-6 position-relative " data-bs-ride="carousel">
               <div className="carousel-indicators">
                 <button
                   type="button"
@@ -32,27 +44,14 @@ function Home() {
                   aria-current="true"
                   aria-label="Slide 1"
                 ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide-to="1"
-                  aria-label="Slide 2"
-                ></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
               </div>
               <div className="carousel-inner">
                 <div className="carousel-item active">
-                  <img
-                    src="src/assets/images/main-banner-1.jpg"
-                    className="d-block w-100"
-                    alt="..."
-                  />
+                  <img src="src/assets/images/main-banner-1.jpg" className="d-block w-100" alt="..." />
                 </div>
                 <div className="carousel-item">
-                  <img
-                    src="src/assets/images/main-banner.jpg"
-                    className="d-block w-100"
-                    alt="..."
-                  />
+                  <img src="src/assets/images/main-banner.jpg" className="d-block w-100" alt="..." />
                 </div>
               </div>
               <div className="mainland-text position-absolute handel-overflow pb-2">
@@ -195,11 +194,7 @@ function Home() {
                 <h6>Smart Watch</h6>
                 <p className="opacity-50">10 item</p>
               </div>
-              <img
-                width={110}
-                src="./src/assets/images/watch.jpg"
-                alt="camera"
-              />
+              <img width={110} src="./src/assets/images/watch.jpg" alt="camera" />
             </div>
             <div className="categorie-item d-flex align-items-center justify-content-between">
               <div>
@@ -253,16 +248,8 @@ function Home() {
           <div className="d-flex align-items-center justify-content-between mb-4">
             <h3>Featured Collection</h3>
             <div>
-              <MdArrowBackIosNew
-                onClick={() => FeaturedCollectionRef.current.slidePrev()}
-                className="swiper-arrow me-2"
-                size={23}
-              />
-              <MdArrowForwardIos
-                onClick={() => FeaturedCollectionRef.current.slideNext()}
-                className="swiper-arrow"
-                size={23}
-              />
+              <MdArrowBackIosNew onClick={() => FeaturedCollectionRef.current.slidePrev()} className="swiper-arrow me-2" size={23} />
+              <MdArrowForwardIos onClick={() => FeaturedCollectionRef.current.slideNext()} className="swiper-arrow" size={23} />
             </div>
           </div>
 
@@ -297,8 +284,7 @@ function Home() {
                     <Card
                       data={{
                         brand: "Havells",
-                        title:
-                          "Kids headphones bulk 10 pack multi colored for students",
+                        title: "Kids headphones bulk 10 pack multi colored for students",
                         rate: "2.4",
                         price: 200,
                       }}
@@ -361,8 +347,7 @@ function Home() {
                   text: "dark",
                   label: "smart phones",
                   subTitle: "Smartphone 13 Pro.",
-                  title:
-                    "Now in Green. From $999.00 or $41.62/mo. for 24 mo. Footnote*",
+                  title: "Now in Green. From $999.00 or $41.62/mo. for 24 mo. Footnote*",
                   img: "./src/assets/images/subbanner-03.webp",
                 }}
               />
@@ -389,22 +374,19 @@ function Home() {
           <div className="d-flex align-items-center justify-content-between mb-4">
             <h3>Special Products</h3>
             <div>
-              <MdArrowBackIosNew
-                onClick={() => SpecialProductsRef.current.slidePrev()}
-                className="swiper-arrow me-2"
-                size={23}
-              />
-              <MdArrowForwardIos
-                onClick={() => SpecialProductsRef.current.slideNext()}
-                className="swiper-arrow"
-                size={23}
-              />
+              <MdArrowBackIosNew onClick={() => SpecialProductsRef.current.slidePrev()} className="swiper-arrow me-2" size={23} />
+              <MdArrowForwardIos onClick={() => SpecialProductsRef.current.slideNext()} className="swiper-arrow" size={23} />
             </div>
           </div>
 
           <Swiper
+            modules={[Grid]}
+            slidesPerView={2}
             spaceBetween={20}
-            slidesPerView={6}
+            slidesPerColumn={2}
+            slidesPerGroup={3}
+            grid={{ rows: 2 }}
+            slidesPerColumnFill="row"
             onSwiper={(swiper) => {
               SpecialProductsRef.current = swiper;
             }}
@@ -420,6 +402,8 @@ function Home() {
               },
             }}
           >
+            {}
+
             {[...Array(15)].map(() => {
               return (
                 <SwiperSlide>
@@ -427,17 +411,7 @@ function Home() {
                     margin="20px"
                     data={{
                       brand: "Havells",
-                      title:
-                        "Kids headphones bulk 10 pack multi colored for students",
-                      rate: "2.4",
-                      price: 200,
-                    }}
-                  />
-                  <SpecialProductsCard
-                    data={{
-                      brand: "Havells",
-                      title:
-                        "Kids headphones bulk 10 pack multi colored for students",
+                      title: "Kids headphones bulk 10 pack multi colored for students",
                       rate: "2.4",
                       price: 200,
                     }}
@@ -451,7 +425,6 @@ function Home() {
 
       {/* <section className="home-wrapper-2 py-5">
         <div className="container">
-          <PopularProduct />
         </div>
       </section> */}
       {/* end Special Products  */}

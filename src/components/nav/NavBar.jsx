@@ -3,7 +3,9 @@ import { RiMenuFill } from "react-icons/ri";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { IoIosSearch } from "react-icons/io";
+
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import "./navbar.css";
 import "swiper/css";
@@ -22,11 +24,13 @@ function Navbar() {
       <nav className="navbar text-white">
         <div className="container-fluid px-xl-5 px-md-5 py-2 px-md-4">
           <div className="row w-100">
-            <h2 className="col-3 col-xxl-1 col-md-2 col-lg-1 col-xl-1 col-sm-7">logo</h2>
+            <Link className="col-3 col-xxl-1 col-md-2 col-lg-1 col-xl-1 col-sm-7" to={"/"}>
+              <h2>logo</h2>
+            </Link>
             <div className="col-md-6 col-xl-6  col-sm-12 col-xxl-8 col-lg-6 px-xl-4 ps-xl-5 px-lg-2 px-md-3 d-none d-md-block  ">
-              <div class="input-group">
-                <input type="text" class="form-control py-2 shadow-none" placeholder="search" />
-                <div class="input-group-text">
+              <div className="input-group">
+                <input type="text" className="form-control py-2 shadow-none" placeholder="search" />
+                <div className="input-group-text">
                   <IoIosSearch size={23} />
                 </div>
               </div>
@@ -86,7 +90,7 @@ function Navbar() {
                   <div className=" d-flex align-items-center position-relative">
                     <div className="wishlist">
                       <img src="./src/assets/images/wishlist.svg" width={35} alt="" />
-                      {wishlist >= 1 && <span class="position-absolute translate-middle badge rounded-pill ">{wishlist}</span>}
+                      {wishlist >= 1 && <span className="position-absolute translate-middle badge rounded-pill ">{wishlist}</span>}
                     </div>
                     <span className="nav-text ps-2 navbar-hide">Wishlist</span>
                   </div>
@@ -103,9 +107,9 @@ function Navbar() {
               </div>
             </div>
           </div>
-          <div class="input-group d-flex d-md-none mt-3 mx-sm-5 mx-2 ">
-            <input type="text" class="form-control py-2 shadow-none" placeholder="search" />
-            <div class="input-group-text">
+          <div className="input-group d-flex d-md-none mt-3 mx-sm-5 mx-2 ">
+            <input type="text" className="form-control py-2 shadow-none" placeholder="search" />
+            <div className="input-group-text">
               <IoIosSearch size={23} />
             </div>
           </div>
