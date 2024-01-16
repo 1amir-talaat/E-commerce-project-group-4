@@ -56,7 +56,7 @@ function Home() {
               </div>
               <div className="mainland-text position-absolute handel-overflow pb-2">
                 <h4>Supercharged for pros.</h4>
-                <h5>special sale</h5>
+                <h5>Special sale</h5>
                 <p>
                   from $999.00 or $41.62/mo.
                   <br />
