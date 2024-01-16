@@ -20,7 +20,7 @@ function Home() {
   const SpecialProductsRef = useRef();
 
   const ProductList = ({ products }) => {
-    // Group products into pairs
+    // Group products into pairs tst
     const groupedProducts = [];
     for (let i = 0; i < products.length; i += 2) {
       const pair = [products[i], products[i + 1]];
