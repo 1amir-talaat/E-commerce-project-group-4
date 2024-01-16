@@ -93,6 +93,7 @@
 }
 
 .landing-page .mainland-text h5 {
+  letter-spacing: 0.4px !important;
   font-weight: 500;
   line-height: 50px;
   font-size: 45px;
@@ -148,6 +149,7 @@
 }
 
 .landing-page .small-mainland-text h5 {
+  letter-spacing: 0.3px !important;
   font-weight: 600;
   line-height: 35px;
   font-size: 22px;

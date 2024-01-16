@@ -38,3 +38,36 @@
   background-color: var(--button-color);
   color: var(--main-color);
 }
+
+.sub-img {
+  position: relative;
+  padding: 0 15px 20px;
+}
+
+.special-products-arrow {
+  position: absolute;
+  color: rgb(169, 169, 169);
+  z-index: 9999;
+}
+
+.arrow-back {
+  top: 0px;
+  left: 8px;
+}
+
+.arrow-front {
+  top: 0px;
+  right: 8px;
+}
+
+.carouse-continer {
+  width: 80%;
+}
+
+.special-products-arrow {
+  display: none;
+}
+
+.product-card:hover .special-products-arrow {
+  display: block;
+}
