@@ -6,6 +6,7 @@ import Card from "../components/card/Card";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SpecialProductsCard from "../components/Special Products Card/SpecialProductsCard";
 import BannerCard from "../components/BannerCard/BannerCard";
+import PopularProduct from "../components/popularProductSection/PopularProduct";
 
 function Home() {
   const swiperRef = useRef();
@@ -405,6 +406,12 @@ function Home() {
               );
             })}
           </Swiper>
+        </div>
+      </section>
+
+      <section className="home-wrapper-2 py-5">
+        <div className="container">
+          <PopularProduct />
         </div>
       </section>
       {/* end Special Products  */}

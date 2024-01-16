@@ -2,6 +2,7 @@ import { MdStarRate } from "react-icons/md";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoMdHeart } from "react-icons/io";
 import { MdAddShoppingCart } from "react-icons/md";
+import { FaCheck } from "react-icons/fa";
 
 import { FaEye } from "react-icons/fa";
 
@@ -9,7 +10,8 @@ import React, { useState } from "react";
 import "./card.css";
 
 function Card({ data }) {
-  const [hurt, setHurt] = useState(true);
+  const [hurt, setHurt] = useState(false);
+  const [cart, setCart] = useState(false);
 
   return (
     <>
@@ -35,7 +37,11 @@ function Card({ data }) {
             <IoIosHeartEmpty onClick={() => setHurt(!hurt)} size={35} fillOpacity={0.9} className="rounded-pill card-icon mb-1" />
           )}
           <div className="hide d-flex align-items-center flex-column">
-            <MdAddShoppingCart fillOpacity={0.9} size={33} className="rounded-pill card-icon mb-1" />
+            {cart ? (
+              <FaCheck fillOpacity={0.9} size={33} className="rounded-pill card-icon mb-1" />
+            ) : (
+              <MdAddShoppingCart onClick={() => setCart(!cart)} fillOpacity={0.9} size={33} className="rounded-pill card-icon mb-1" />
+            )}
             <FaEye size={30} fillOpacity={0.9} className="rounded-pill card-icon mb-1" />
           </div>
         </div>

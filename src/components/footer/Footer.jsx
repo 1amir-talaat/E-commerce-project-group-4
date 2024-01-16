@@ -15,7 +15,7 @@ function Footer() {
             <div className="py-4">
               <div className="row">
                 <div className="col-12 col-lg-6 mb-lg-0 mb-4 mb-md-0">
-                  <div className="d-flex gap-4 align-item-center">
+                  <div className="d-flex gap-4 align-item-center justify-content-center mb-sm-4">
                     <img className="h-100" src="./src/assets/images/newsletter.png" alt="" />
                     <h2 className="handel-overflow">Sign Up for Newsleeter</h2>
                   </div>
