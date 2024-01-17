@@ -1,0 +1,76 @@
+.popular-img {
+  width: 50px;
+  height: 50px;
+}
+
+.popular-cards-sm {
+  display: none;
+}
+
+.popular-cards-lg {
+  border-radius: 10px;
+  box-shadow: 0 0 10px #0000001a;
+  padding: 10px 0px;
+  height: 100%;
+}
+
+.popular-cards-lg :hover,
+.lg-active {
+  background: #f2f2f2;
+  transition: 0.2s;
+}
+
+.popular-card-lg {
+  margin: 0 0 2px;
+  padding: 7px 10px;
+}
+
+.popular {
+  display: flex;
+}
+
+.popular-cards {
+  width: 18%;
+  margin-right: 20px;
+}
+
+.popular-swiper {
+  width: 82%;
+}
+
+@media (max-width: 1269px) {
+  .popular-cards {
+    width: 25%;
+  }
+
+  .popular-swiper {
+    width: 75%;
+  }
+}
+
+@media (max-width: 990px) {
+  .popular-cards-sm {
+    display: block;
+  }
+
+  .popular-cards-lg {
+    display: none;
+  }
+
+  .popular-cards {
+    margin: 0;
+  }
+
+  .popular-swiper {
+    width: 100%;
+  }
+}
+
+.popular-card-sm {
+  color: #777777;
+  font-weight: 500;
+}
+
+.ms-active {
+  color: black;
+}

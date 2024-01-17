@@ -35,6 +35,10 @@ img {
   }
 }
 
+.swiper-auto {
+  width: auto;
+}
+
 /* Landing Page */
 .landing-page {
   position: relative;

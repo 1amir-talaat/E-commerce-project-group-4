@@ -8,14 +8,17 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import Card from "../components/card/Card";
 import SpecialProductsCard from "../components/SpecialProductsCard/SpecialProductsCard";
 import BannerCard from "../components/BannerCard/BannerCard";
+import PopularProductsCard from "../components/PopularProductsSection/PopularProductsCard";
 
 import "swiper/css";
+
 import products from "./temp-data.json";
 import productCard from "./data.json";
 
 function Home() {
-  const FeaturedCollectionRef = useRef();
-  const SpecialProductsRef = useRef();
+  const featuredCollectionRef = useRef();
+  const specialProductsRef = useRef();
+  const popularProductsRef = useRef();
 
   const midpoint = Math.ceil(products.length / 2);
 
@@ -25,9 +28,9 @@ function Home() {
   return (
     <>
       {/* Start Landing Page*/}
-      <section className="landing-page py-5">
+      <section className="landing-page py-5 bg-white">
         <div className="container">
-          <div className="row w-100">
+          <div className="row">
             <div id="carouselExampleIndicators" className="carousel slide col-lg-6 position-relative " data-bs-ride="carousel">
               <div className="carousel-indicators">
                 <button
@@ -242,8 +245,8 @@ function Home() {
           <div className="d-flex align-items-center justify-content-between mb-4">
             <h3>Featured Collection</h3>
             <div>
-              <MdArrowBackIosNew onClick={() => FeaturedCollectionRef.current.slidePrev()} className="swiper-arrow me-2" size={23} />
-              <MdArrowForwardIos onClick={() => FeaturedCollectionRef.current.slideNext()} className="swiper-arrow" size={23} />
+              <MdArrowBackIosNew onClick={() => featuredCollectionRef.current.slidePrev()} className="swiper-arrow me-2" size={23} />
+              <MdArrowForwardIos onClick={() => featuredCollectionRef.current.slideNext()} className="swiper-arrow" size={23} />
             </div>
           </div>
 
@@ -251,7 +254,7 @@ function Home() {
             spaceBetween={10}
             slidesPerGroup={5}
             onSwiper={(swiper) => {
-              FeaturedCollectionRef.current = swiper;
+              featuredCollectionRef.current = swiper;
             }}
             breakpoints={{
               0: {
@@ -274,9 +277,7 @@ function Home() {
             {productCard.map((card) => {
               return (
                 <SwiperSlide className="swiper-card">
-                    <Card
-                      data={card}
-                    />
+                  <Card data={card} />
                 </SwiperSlide>
               );
             })}
@@ -284,7 +285,6 @@ function Home() {
         </div>
       </section>
       {/* end Featured Collection */}
-
       {/* start Banner section */}
       <section className="home-wrapper-2 py-5">
         <div className="container">
@@ -355,14 +355,13 @@ function Home() {
       </section>
       {/* end banner section */}
       {/* start Special Products  */}
-
       <section className="home-wrapper-2 py-5">
         <div className="container">
           <div className="d-flex align-items-center justify-content-between mb-4">
             <h3>Special Products</h3>
             <div>
-              <MdArrowBackIosNew onClick={() => SpecialProductsRef.current.slidePrev()} className="swiper-arrow me-2" size={23} />
-              <MdArrowForwardIos onClick={() => SpecialProductsRef.current.slideNext()} className="swiper-arrow" size={23} />
+              <MdArrowBackIosNew onClick={() => specialProductsRef.current.slidePrev()} className="swiper-arrow me-2" size={23} />
+              <MdArrowForwardIos onClick={() => specialProductsRef.current.slideNext()} className="swiper-arrow" size={23} />
             </div>
           </div>
 
@@ -370,7 +369,7 @@ function Home() {
             slidesPerView={3}
             spaceBetween={10}
             onSwiper={(swiper) => {
-              SpecialProductsRef.current = swiper;
+              specialProductsRef.current = swiper;
             }}
             breakpoints={{
               0: {
@@ -399,12 +398,21 @@ function Home() {
           </Swiper>
         </div>
       </section>
-
-      {/* <section className="home-wrapper-2 py-5">
-        <div className="container">
-        </div>
-      </section> */}
       {/* end Special Products  */}
+      {/* start Popular Products */}
+      <section className="home-wrapper-2 py-5">
+        <div className="container">
+          <div className="d-flex align-items-center justify-content-between mb-4">
+            <h3>Our Popular Products</h3>
+            <div>
+              <MdArrowBackIosNew onClick={() => popularProductsRef.current.slidePrev()} className="swiper-arrow me-2" size={23} />
+              <MdArrowForwardIos onClick={() => popularProductsRef.current.slideNext()} className="swiper-arrow" size={23} />
+            </div>
+          </div>
+          <PopularProductsCard />
+        </div>
+      </section>
+      {/* end Popular Products */}
     </>
   );
 }

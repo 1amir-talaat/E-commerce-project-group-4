@@ -80,10 +80,10 @@ function SpecialProductsCard(props) {
                 return Math.floor(props.data.rate) >= index ? <MdStarRate fill="#ffc30e" /> : <MdStarRate fill="gray" fillOpacity={0.339} />;
               })}
             </div>
-            <p>
-              <Timer expiryTimestamp={time}/>
-            </p>
             <p className="product-price">{props.data.price}$</p>
+            <div className="mb-3">
+              <Timer expiryTimestamp={time} />
+            </div>
 
             <a href="#" className="product-btn btn btn-secondary">
               Details
