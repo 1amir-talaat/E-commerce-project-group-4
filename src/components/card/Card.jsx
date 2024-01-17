@@ -17,7 +17,7 @@ function Card({ data }) {
     <>
       <div className="product-card position-relative">
         <div className="product-img">
-          <img src="./src/assets/images/tab.jpg" alt="" />
+          <img src={data.img} alt="" />
         </div>
         <div className="product-info">
           <p className="product-brand">{data.brand}</p>

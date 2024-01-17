@@ -1,7 +1,6 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Grid } from "swiper/modules";
 
 import { MdArrowForwardIos } from "react-icons/md";
 import { MdArrowBackIosNew } from "react-icons/md";
@@ -10,23 +9,18 @@ import Card from "../components/card/Card";
 import SpecialProductsCard from "../components/SpecialProductsCard/SpecialProductsCard";
 import BannerCard from "../components/BannerCard/BannerCard";
 
-import "swiper/css/grid";
 import "swiper/css";
 import products from "./temp-data.json";
+import productCard from "./data.json";
 
 function Home() {
-  console.log(products);
   const FeaturedCollectionRef = useRef();
   const SpecialProductsRef = useRef();
 
-  const ProductList = ({ products }) => {
-    // Group products into pairs tst
-    const groupedProducts = [];
-    for (let i = 0; i < products.length; i += 2) {
-      const pair = [products[i], products[i + 1]];
-      groupedProducts.push(pair);
-    }
-  };
+  const midpoint = Math.ceil(products.length / 2);
+
+  const firstHalf = products.slice(0, midpoint);
+  const secondHalf = products.slice(-midpoint);
 
   return (
     <>
@@ -56,7 +50,7 @@ function Home() {
               </div>
               <div className="mainland-text position-absolute handel-overflow pb-2">
                 <h4>Supercharged for pros.</h4>
-                <h5>Special sale</h5>
+                <h5>special sale</h5>
                 <p>
                   from $999.00 or $41.62/mo.
                   <br />
@@ -255,7 +249,7 @@ function Home() {
 
           <Swiper
             spaceBetween={10}
-            slidesPerView={6}
+            slidesPerGroup={5}
             onSwiper={(swiper) => {
               FeaturedCollectionRef.current = swiper;
             }}
@@ -277,19 +271,12 @@ function Home() {
               },
             }}
           >
-            {[...Array(15)].map(() => {
+            {productCard.map((card) => {
               return (
                 <SwiperSlide className="swiper-card">
-                  <div>
                     <Card
-                      data={{
-                        brand: "Havells",
-                        title: "Kids headphones bulk 10 pack multi colored for students",
-                        rate: "2.4",
-                        price: 200,
-                      }}
+                      data={card}
                     />
-                  </div>
                 </SwiperSlide>
               );
             })}
@@ -367,7 +354,7 @@ function Home() {
         </div>
       </section>
       {/* end banner section */}
-      {/* Start Special Products  */}
+      {/* start Special Products  */}
 
       <section className="home-wrapper-2 py-5">
         <div className="container">
@@ -380,13 +367,8 @@ function Home() {
           </div>
 
           <Swiper
-            modules={[Grid]}
-            slidesPerView={2}
-            spaceBetween={20}
-            slidesPerColumn={2}
-            slidesPerGroup={3}
-            grid={{ rows: 2 }}
-            slidesPerColumnFill="row"
+            slidesPerView={3}
+            spaceBetween={10}
             onSwiper={(swiper) => {
               SpecialProductsRef.current = swiper;
             }}
@@ -402,23 +384,18 @@ function Home() {
               },
             }}
           >
-            {}
-
-            {[...Array(15)].map(() => {
-              return (
-                <SwiperSlide>
-                  <SpecialProductsCard
-                    margin="20px"
-                    data={{
-                      brand: "Havells",
-                      title: "Kids headphones bulk 10 pack multi colored for students",
-                      rate: "2.4",
-                      price: 200,
-                    }}
-                  />
-                </SwiperSlide>
-              );
-            })}
+            {firstHalf &&
+              firstHalf.map((product, index) => {
+                console.log(index);
+                return (
+                  <>
+                    <SwiperSlide className="p-1">
+                      <SpecialProductsCard margin="20px" data={firstHalf[index]} />
+                      <SpecialProductsCard data={secondHalf[index]} />
+                    </SwiperSlide>
+                  </>
+                );
+              })}
           </Swiper>
         </div>
       </section>

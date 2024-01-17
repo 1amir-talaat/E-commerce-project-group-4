@@ -1,5 +1,6 @@
 .banner-card {
   border-radius: 10px;
+  user-select: none;
 }
 
 .banner-card img {

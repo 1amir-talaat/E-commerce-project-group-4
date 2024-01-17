@@ -1,5 +1,5 @@
 import React from "react";
-import products from "./data.json";
+import products from "../data.json";
 import SideBar from "./SideBar/SideBar";
 
 import "./prodects.css";
