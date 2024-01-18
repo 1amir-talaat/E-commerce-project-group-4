@@ -42,7 +42,7 @@ img {
 /* Landing Page */
 .landing-page {
   position: relative;
-  user-select: none
+  user-select: none;
 }
 
 .landing-page img {
@@ -57,6 +57,12 @@ img {
 
 .carousel {
   position: relative;
+}
+
+@media (max-width: 989px) {
+  .carousel {
+    padding: 12px;
+  }
 }
 
 .landing-page .carousel-indicators [data-bs-target] {
@@ -77,14 +83,6 @@ img {
   border-bottom: 10px solid transparent;
   transition: opacity 0.6s ease;
   border-radius: 109%;
-}
-
-.landing-page .col-lg-3 {
-  padding-right: 0;
-}
-
-.landing-page .col-lg-6 {
-  padding-right: 0;
 }
 
 .landing-page .mainland-text {

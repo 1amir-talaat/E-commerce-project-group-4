@@ -70,9 +70,9 @@ function Navbar() {
                             Profile
                           </a>
                         </div>
-                        <a className="text-dark" onClick={() => setLogin(!login)}>
+                        <div className="text-dark" onClick={() => setLogin(!login)}>
                           Sign Out
-                        </a>
+                        </div>
                       </div>
                     </div>
                   ) : (
