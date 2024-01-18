@@ -24,7 +24,7 @@ function Navbar() {
       <nav className="navbar text-white">
         <div className="container-fluid px-xl-5 px-md-5 py-2 px-md-4">
           <div className="row w-100">
-            <Link className="col-3 col-xxl-1 col-md-2 col-lg-1 col-xl-1 col-sm-7" to={"/"}>
+            <Link className="col-3 col-xxl-1 col-md-2 col-lg-1 col-xl-1 col-sm-7" to={"index"}>
               <h2>logo</h2>
             </Link>
             <div className="col-md-6 col-xl-6  col-sm-12 col-xxl-8 col-lg-6 px-xl-4 ps-xl-5 px-lg-2 px-md-3 d-none d-md-block  ">

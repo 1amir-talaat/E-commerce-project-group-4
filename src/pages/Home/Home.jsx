@@ -1,24 +1,24 @@
-import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import React, { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { MdArrowForwardIos } from "react-icons/md";
 import { MdArrowBackIosNew } from "react-icons/md";
 
-import Card from "../components/card/Card";
-import SpecialProductsCard from "../components/SpecialProductsCard/SpecialProductsCard";
-import BannerCard from "../components/BannerCard/BannerCard";
-import PopularProductsCard from "../components/PopularProductsSection/PopularProductsCard";
+import Card from "../../components/card/Card";
+import BannerCard from "../../components/BannerCard/BannerCard";
+import SpecialProductsCard from "../../components/SpecialProductsCard/SpecialProductsCard";
+import PopularProductsCard from "../../components/PopularProductsSection/PopularProductsCard";
 
 import "swiper/css";
+import "./Home.css";
 
-import products from "./temp-data.json";
-import productCard from "./data.json";
+import products from "../temp-data.json";
+import productCard from "../data.json";
 
 function Home() {
   const featuredCollectionRef = useRef();
   const specialProductsRef = useRef();
-  const popularProductsRef = useRef();
 
   const midpoint = Math.ceil(products.length / 2);
 
@@ -402,13 +402,6 @@ function Home() {
       {/* start Popular Products */}
       <section className="home-wrapper-2 py-5">
         <div className="container">
-          <div className="d-flex align-items-center justify-content-between mb-4">
-            <h3>Our Popular Products</h3>
-            <div>
-              <MdArrowBackIosNew onClick={() => popularProductsRef.current.slidePrev()} className="swiper-arrow me-2" size={23} />
-              <MdArrowForwardIos onClick={() => popularProductsRef.current.slideNext()} className="swiper-arrow" size={23} />
-            </div>
-          </div>
           <PopularProductsCard />
         </div>
       </section>

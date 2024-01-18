@@ -1,28 +1,37 @@
-// import "./styleCard.css";
 import React, { useState, useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import { MdArrowForwardIos } from "react-icons/md";
+import { MdArrowBackIosNew } from "react-icons/md";
+
 import data from "./data";
 import "./PopularProductsCard.css";
 import Card from "../card/Card";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 function PopularProductsCard() {
   const [selectedCategory, setSelectedCategory] = useState(Object.keys(data)[0]);
-  const propularProductsRef = useRef();
+  const popularProductsRef = useRef();
 
   const handleCategoryChange = (categoryKey) => {
     setSelectedCategory(categoryKey);
   };
   return (
     <>
+      <div className="d-flex align-items-center justify-content-between mb-4">
+        <h3>Our Popular Products</h3>
+        <div>
+          <MdArrowBackIosNew onClick={() => popularProductsRef.current.slidePrev()} className="swiper-arrow me-2" size={23} />
+          <MdArrowForwardIos onClick={() => popularProductsRef.current.slideNext()} className="swiper-arrow" size={23} />
+        </div>
+      </div>
       <div className="popular-cards-sm mb-3">
         <Swiper spaceBetween={10} slidesPerView={"auto"} className="popular-cards-swiper">
           {Object.keys(data).map((categoryKey, index) => {
             const category = data[categoryKey];
             return (
-              <SwiperSlide key={index} className="p-1 swiper-auto me-4">
+              <SwiperSlide className="p-1 swiper-auto me-4">
                 <div
                   className={`d-flex align-items-center gap-1 popular-card-sm ${categoryKey == selectedCategory && "ms-active"} `}
-                  key={index}
                   onClick={() => handleCategoryChange(categoryKey)}
                 >
                   <img src={category.img} className="popular-img" />
@@ -41,7 +50,6 @@ function PopularProductsCard() {
               return (
                 <div
                   className={`d-flex align-items-center gap-3 popular-card-lg ${categoryKey == selectedCategory && "lg-active"} `}
-                  key={index}
                   onClick={() => handleCategoryChange(categoryKey)}
                 >
                   <img src={category.img} className="popular-img" />
@@ -55,7 +63,7 @@ function PopularProductsCard() {
           <Swiper
             slidesPerView={2}
             onSwiper={(swiper) => {
-              propularProductsRef.current = swiper;
+              popularProductsRef.current = swiper;
             }}
             breakpoints={{
               0: {
@@ -80,7 +88,7 @@ function PopularProductsCard() {
             {data[selectedCategory].productsData.map((card, index) => {
               return (
                 <>
-                  <SwiperSlide key={index} className="p-1">
+                  <SwiperSlide className="p-1">
                     <Card data={card} />
                   </SwiperSlide>
                 </>
