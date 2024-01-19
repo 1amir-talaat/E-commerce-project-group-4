@@ -9,26 +9,26 @@ import { FaEye } from "react-icons/fa";
 import React, { useState } from "react";
 import "./card.css";
 
-function Card({ data }) {
+function Card(props) {
   const [hurt, setHurt] = useState(false);
   const [cart, setCart] = useState(false);
 
   return (
     <>
-      <div className="product-card position-relative p-2">
-        <div className="product-img">
-          <img src={data.img} alt="" />
+      <div className="product-card position-relative p-2 " style={props.grid == 4 ? { display: "flex" } : {}}>
+        <div className="product-img" style={props.grid == 4 ? { height: "240px", width: "35%" } : {}}>
+          <img src={props.data.img} alt="" />
         </div>
-        <div className="product-info">
-          <p className="product-brand">{data.brand}</p>
-          <p className="product-title">{data.title}</p>
+        <div className={`product-info ${props.grid == 4 && "d-flex flex-column justify-content-center;"}`}>
+          <p className="product-brand">{props.data.brand}</p>
+          <p className="product-title">{props.data.title}</p>
           <div className="product-rate">
             {[...Array(5)].map((star, index) => {
               index += 1;
-              return Math.floor(data.rate) >= index ? <MdStarRate fill="#ffc30e" /> : <MdStarRate fill="gray" fillOpacity={0.339} />;
+              return Math.floor(props.data.rate) >= index ? <MdStarRate fill="#ffc30e" /> : <MdStarRate fill="gray" fillOpacity={0.339} />;
             })}
           </div>
-          <div className="product-price">{data.price}$</div>
+          <div className="product-price">{props.data.price}$</div>
         </div>
         <div className="product-hover position-absolute top-0 gap-5 gap-sm-1 end-0 p-2">
           {hurt ? (

@@ -36,45 +36,45 @@ function Navbar() {
               </div>
             </div>
 
-            <div className="col-9 col-md-4  col-sm-5 end col-xl-3 col-lg-4  ol-xxl-3 d-flex align-items-center">
+            <div className="col-9 col-md-4  col-sm-5 end col-xl-4 col-xxl-3 col-lg-4  ol-xxl-3 d-flex align-items-center">
               <div className="d-flex align-items-center justify-content-around  w-100">
                 {/* account */}
 
                 <div className="item">
                   {login ? (
-                    <div className="dropdown border-0 position-relative">
-                      <div className=" d-flex align-items-center dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <div className="dropdown-text d-flex flex-column  ">
-                          <img src="./src/assets/images/user.svg" className="navbar-show" alt="" />
-                          <span className="nav-text navbar-hide">hello, name</span>
-                          <span className="nav-text navbar-hide">My Account</span>
+                      <div className="dropdown border-0 position-relative">
+                        <div className=" d-flex align-items-center dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                          <div className="dropdown-text d-flex flex-column  ">
+                            <img src="./src/assets/images/user.svg" className="navbar-show" alt="" />
+                            <span className="nav-text navbar-hide">hello, name</span>
+                            <span className="nav-text navbar-hide">My Account</span>
+                          </div>
+                          <TiArrowSortedDown className="drop-down" />
                         </div>
-                        <TiArrowSortedDown className="drop-down" />
+                        <div className="text-center dropdown-menu progile-detales position-absolute">
+                          <div className="dropdown-item-container d-flex flex-column text-dark">
+                            <a className="link text-dark">
+                              <img src="https://f.nooncdn.com/s/app/com/noon/icons/orders_menu_icon_v3.svg" className="" />
+                              Orders
+                            </a>
+                            <a className="link text-dark">
+                              <img src="https://f.nooncdn.com/s/app/com/noon/icons/addresses_menu_icon_v3.svg" className="" />
+                              Addresses
+                            </a>
+                            <a className="link text-dark">
+                              <img src="https://f.nooncdn.com/s/app/com/noon/icons/payment_menu_icon_v3.svg" alt="Payments" className="" />
+                              Payments
+                            </a>
+                            <a className="link text-dark">
+                              <img src="https://f.nooncdn.com/s/app/com/noon/icons/profile_menu_icon_v3.svg" className="" />
+                              Profile
+                            </a>
+                          </div>
+                          <div className="text-dark" onClick={() => setLogin(!login)}>
+                            Sign Out
+                          </div>
+                        </div>
                       </div>
-                      <div className="text-center dropdown-menu progile-detales position-absolute">
-                        <div className="dropdown-item-container d-flex flex-column text-dark">
-                          <a className="link text-dark">
-                            <img src="https://f.nooncdn.com/s/app/com/noon/icons/orders_menu_icon_v3.svg" className="" />
-                            Orders
-                          </a>
-                          <a className="link text-dark">
-                            <img src="https://f.nooncdn.com/s/app/com/noon/icons/addresses_menu_icon_v3.svg" className="" />
-                            Addresses
-                          </a>
-                          <a className="link text-dark">
-                            <img src="https://f.nooncdn.com/s/app/com/noon/icons/payment_menu_icon_v3.svg" alt="Payments" className="" />
-                            Payments
-                          </a>
-                          <a className="link text-dark">
-                            <img src="https://f.nooncdn.com/s/app/com/noon/icons/profile_menu_icon_v3.svg" className="" />
-                            Profile
-                          </a>
-                        </div>
-                        <div className="text-dark" onClick={() => setLogin(!login)}>
-                          Sign Out
-                        </div>
-                      </div>
-                    </div>
                   ) : (
                     <div className=" d-flex align-items-center">
                       <img src="./src/assets/images/user.svg" alt="" />
@@ -131,8 +131,8 @@ function Navbar() {
 
               <div className="category-container dropdown-menu position-absolute">
                 <div className="categprs">
-                  {tempData.categorys.map((ctegory) => {
-                    return <p>{Object.keys(ctegory)[0]}</p>;
+                  {tempData.categorys.map((ctegory, index) => {
+                    return <p key={index}>{Object.keys(ctegory)[0]}</p>;
                   })}
                 </div>
               </div>
