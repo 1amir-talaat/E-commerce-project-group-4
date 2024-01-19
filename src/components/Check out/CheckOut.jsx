@@ -13,7 +13,7 @@ function CheckOut() {
     const [month, setMonth] = useState('');
     const [year, setYear] = useState('');
     const [cvv, setCvv] = useState('');
-    const [isCardValid, setIsCardValid] = useState(true);
+    const [isCardValid, setIsCardValid] = useState(false);
     const [cardNumber, setCardNumber] = useState('');
     const [currentData, setCurrentData] = useState([
         CheckOutData[0].name,
@@ -50,6 +50,9 @@ function CheckOut() {
 
     const handleCardNumber = (e) => {
         const enteredCardNumber = e.target.value.replace(/\s/g, '');
+        if (enteredCardNumber == '0000000000000000') {
+            setIsCardValid(false);
+        }
         setCardNumber(enteredCardNumber);
         setIsCardValid(luhnCheck(enteredCardNumber));
     };
@@ -83,6 +86,7 @@ function CheckOut() {
 
     const renderPayment = () => {
         if (paymentType === 'credit') {
+            
             return (
                 <>
                 <hr />
@@ -92,7 +96,7 @@ function CheckOut() {
                         <input
                             className={`form-control ${!isCardValid ? 'is-invalid' : ''}`}
                             type='text'
-                            placeholder='**** **** ****'
+                            placeholder='**** **** **** ****'
                             name='cardNumber'
                             onChange={handleCardNumber}
                             maxLength={16}
@@ -103,7 +107,7 @@ function CheckOut() {
                         <div className='seclabel'>
                             <label style={{ fontSize: "20px" }}>EXPIRY DATE</label>
                             <div className='twodivs'>
-                                <div className='firstdivInput'>
+                                <div className='firstdivInput' >
                                     <input
                                         className='w-50'
                                         type='text'
@@ -126,13 +130,13 @@ function CheckOut() {
                                     style={{ padding: "10px" }}
                                 />
                             </div>
-                            <div style={{ display: "flex" }}>
+                            <div style={{ display: "flex", justifyContent:"space-around",width:"33%" }}>
                                 {month === '' ? (
                                     <p style={{ color: 'red', fontSize: '14px' }}>Invalid month</p>
-                                ) : null}
+                                ) : <p></p>}
                                 {year === '' ? (
-                                    <p style={{ color: 'red', fontSize: '14px', marginLeft: "40px" }}>Invalid year</p>
-                                ) : null}
+                                    <p style={{ color: 'red', fontSize: '14px', paddingLeft: "50px" }}>Invalid year</p>
+                                    ) : <p></p>}
                             </div>
                             <div className='cvv'>
                                 <label style={{ fontSize: "20px" }}>CVV</label>
@@ -156,6 +160,10 @@ function CheckOut() {
     </>
             );
         }
+        window.scrollTo({
+            bottom: "0px",
+            behavior: 'smooth'
+        });
         return null;
     };
 
@@ -171,7 +179,7 @@ function CheckOut() {
 
     const renderButton = () => {
         if (paymentType == "credit") {
-            if (month != '' && year != '' && isCardValid != false && cvv != '') {
+            if (month != '' && year != '' && (isCardValid != true || isCardValid != '0000000000000000') && cvv != '') {
                 return (
                     <button className='orderbtn'>Place Order</button>
                 )

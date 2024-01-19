@@ -1,5 +1,6 @@
 .nav{
-    background-color: Yellow;
+    background-color: #232f3e;
+    color: white;
     .widtNav{
         display: flex;
         align-items: center;
@@ -130,7 +131,7 @@ div .container {
                     flex-direction: row;
                     border: 1px solid rgba(0, 0, 0, 0.116);
                     padding: 15px;
-                    width: 30%;
+                    width: 33%;
                     /* width: fit-content; */
                     input{
                         outline: none;
@@ -179,7 +180,7 @@ div .container {
         }
         .orderbtn{
             width: 100%;
-            padding: 20px 0;
+            padding: 10px 0;
             border-radius: 10px;
             outline: none;
             border: none;
