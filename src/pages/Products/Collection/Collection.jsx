@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Card from "../../../components/card/Card";
+import noProduct from "../../../assets/images/no-product-found.png";
 
 import "./Collection.css";
 
@@ -12,8 +13,6 @@ function Collection(props) {
     3: "50%",
     4: "100%",
   };
-
-  
 
   return (
     <>
@@ -138,17 +137,23 @@ function Collection(props) {
           </div>
         </div>
       </div>
-      <div className="collection-products mt-4">
-        <div className="row">
-          {props.products.map((card) => (
-            <>
-              <div className="collection-card mb-2 px-2" style={{ maxWidth: gridWidth[grid] }}>
-                <Card data={card} grid={grid} />
-              </div>
-            </>
-          ))}
+      {props.products.length >= 1 ? (
+        <div className="collection-products mt-4">
+          <div className="row">
+            {props.products.map((card) => (
+              <>
+                <div className="collection-card mb-2 px-2" style={{ maxWidth: gridWidth[grid] }}>
+                  <Card data={card} grid={grid} />
+                </div>
+              </>
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="d-flex h-100 align-items-center justify-content-center pb-5">
+          <img src={noProduct} className="mb-5" style={{width: "50%"}} alt="" />
+        </div>
+      )}
     </>
   );
 }

@@ -100,6 +100,8 @@ function Products() {
 
     return false;
   });
+  
+  console.log(priceFilter);
 
   const filteredProducts = categoriesFilter.filter(
     (value) => rateFilter.includes(value) && brandFilter.includes(value) && priceFilter.includes(value) && stockFilter.includes(value)
