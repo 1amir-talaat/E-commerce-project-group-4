@@ -21,7 +21,7 @@ ul {
   list-style: none;
 }
 
-.form-control {
+.navbar   .form-control {
   border: none;
   outline: none;
 }

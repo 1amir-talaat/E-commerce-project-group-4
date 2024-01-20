@@ -4,7 +4,7 @@ import Home from "./pages/Home/Home";
 import ProductInfo from "./pages/ProductInfo/ProductInfo";
 import Cart from "./pages/Cart/Cart";
 import Products from "./pages/Products/Products";
-
+import CheckOut from "./components/CheckOut/CheckOut";
 function App() {
   return (
     <Routes>
@@ -14,6 +14,7 @@ function App() {
         <Route path="cart" element={<Cart />} />
         <Route path="products" element={<Products />} />
       </Route>
+      <Route path="/check-out" element={<CheckOut />} />
     </Routes>
   );
 }

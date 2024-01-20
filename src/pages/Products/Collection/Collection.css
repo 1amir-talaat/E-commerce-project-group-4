@@ -5,14 +5,7 @@
 }
 
 .select {
-  height: 34px;
-  border-radius: 10px;
-  cursor: pointer;
-  padding: 0 2rem 0 1.5rem;
-  background: #f0f0f0;
-  border: none;
-  outline: none;
-  color: #777777;
+  width: 180px;
 }
 
 .select option {
@@ -20,6 +13,7 @@
 }
 
 .collection-sort h2 {
+  width: 55px;
   color: #1c1b1b;
   font-size: 15px;
   margin: 0 1.3rem 0 0;

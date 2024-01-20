@@ -1,11 +1,23 @@
 import React, { useState } from "react";
 import Card from "../../../components/card/Card";
 import noProduct from "../../../assets/images/no-product-found.png";
+import Select from "react-select";
 
 import "./Collection.css";
 
 function Collection(props) {
   const [grid, setGrid] = useState(1);
+
+  const options = [
+    { value: "Featured", label: "Featured" },
+    { value: "best-selling", label: "Best selling" },
+    { value: "title-ascending", label: "Alphabetically, A-Z" },
+    { value: "title-descending", label: "Alphabetically, Z-A" },
+    { value: "price-ascending", label: "Price, low to high" },
+    { value: "price-descending", label: "Price, high to low" },
+    { value: "created-ascending", label: "Date, old to new" },
+    { value: "created-descending", label: "Date, new to old" },
+  ];
 
   const gridWidth = {
     1: "25%",
@@ -21,18 +33,7 @@ function Collection(props) {
           <h2>
             <label for="SortBy">Sort by:</label>
           </h2>
-          <select name="sort_by" className="select" id="SortBy">
-            <option value="Featured">Featured</option>
-            <option value="best-selling">Best selling</option>
-            <option value="title-ascending">Alphabetically, A-Z</option>
-            <option value="title-descending" selected="selected">
-              Alphabetically, Z-A
-            </option>
-            <option value="price-ascending">Price, low to high</option>
-            <option value="price-descending">Price, high to low</option>
-            <option value="created-ascending">Date, old to new</option>
-            <option value="created-descending">Date, new to old</option>
-          </select>
+          <Select options={options} className="select"/>
         </div>
 
         <div className="collection-grid d-flex align-items-center gap-3">
@@ -151,7 +152,7 @@ function Collection(props) {
         </div>
       ) : (
         <div className="d-flex h-100 align-items-center justify-content-center pb-5">
-          <img src={noProduct} className="mb-5" style={{width: "50%"}} alt="" />
+          <img src={noProduct} className="mb-5" style={{ width: "50%" }} alt="" />
         </div>
       )}
     </>
