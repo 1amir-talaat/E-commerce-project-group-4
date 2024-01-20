@@ -12,19 +12,24 @@ import { FaEye } from "react-icons/fa";
 import "./SpecialProductsCard.css";
 
 import React, { useState, useRef } from "react";
+import Timer from "../timer/Timer";
 
 function SpecialProductsCard(props) {
   const [hurt, setHurt] = useState(false);
   const [cart, setCart] = useState(false);
   const card = useRef();
+  const [mainImg, setMainImg] = useState(props.data.img);
+
+  const time = new Date();
+  time.setSeconds(time.getSeconds() + 600);
 
   return (
     <>
       <div className={`product-card special-products-card position-relative`} style={props.margin && { marginBottom: props.margin }}>
-        <div className="d-flex ">
+        <div className="d-flex justify-content-center align-items-center">
           <div className="product-img w-50">
             <div className="main-img position-relative">
-              <img src="./src/assets/images/tab.jpg" alt="" />
+              <img src={mainImg} alt="" />
               <div className="product-hover position-absolute top-0 gap-5 end-0 p-2">
                 {hurt ? (
                   <IoMdHeart onClick={() => setHurt(!hurt)} size={35} color="f08804" className="rounded-pill card-icon mb-1" />
@@ -41,7 +46,7 @@ function SpecialProductsCard(props) {
                 </div>
               </div>
             </div>
-            <div className="sub-img d-flex position-relative">
+            <div className="sub-imgs d-flex position-relative">
               <MdArrowBackIosNew onClick={() => card.current.slidePrev()} className="special-products-arrow arrow-back me-2" size={20} />
               <div className="m-auto carouse-continer">
                 <Swiper
@@ -51,10 +56,12 @@ function SpecialProductsCard(props) {
                     card.current = swiper;
                   }}
                 >
-                  {[...Array(4)].map(() => {
+                  {props.data.subImgs.map((src) => {
                     return (
-                      <SwiperSlide>
-                        <p>aaaa</p>
+                      <SwiperSlide onClick={() => setMainImg(src)}>
+                        <div className="sub-img">
+                          <img src={src} alt="" className="w-100" />
+                        </div>
                       </SwiperSlide>
                     );
                   })}
@@ -74,6 +81,10 @@ function SpecialProductsCard(props) {
               })}
             </div>
             <p className="product-price">{props.data.price}$</p>
+            <div className="mb-3">
+              <Timer expiryTimestamp={time} />
+            </div>
+
             <a href="#" className="product-btn btn btn-secondary">
               Details
             </a>

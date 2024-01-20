@@ -5,6 +5,7 @@
   box-shadow: 0 0 10px #0000001a;
   border-radius: 10px;
   margin-bottom: 10px;
+  user-select: none;
 }
 
 .product-info {
@@ -39,9 +40,20 @@
   color: var(--main-color);
 }
 
-.sub-img {
+.main-img {
+  min-height: 247px;
+}
+
+.sub-imgs {
   position: relative;
   padding: 0 15px 20px;
+  min-height: 130px;
+  padding: 5px;
+}
+
+.sub-img {
+  border: 1px solid #eaeaea;
+  width: 95px;
 }
 
 .special-products-arrow {
@@ -51,12 +63,12 @@
 }
 
 .arrow-back {
-  top: 0px;
+  top: 38%;
   left: 8px;
 }
 
 .arrow-front {
-  top: 0px;
+  top: 38%;
   right: 8px;
 }
 

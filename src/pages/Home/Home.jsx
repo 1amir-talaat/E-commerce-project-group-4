@@ -1,39 +1,36 @@
-import React, { useRef } from "react";
 import { Link } from "react-router-dom";
+import React, { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Grid } from "swiper/modules";
 
 import { MdArrowForwardIos } from "react-icons/md";
 import { MdArrowBackIosNew } from "react-icons/md";
 
-import Card from "../components/card/Card";
-import SpecialProductsCard from "../components/SpecialProductsCard/SpecialProductsCard";
-import BannerCard from "../components/BannerCard/BannerCard";
+import Card from "../../components/card/Card";
+import BannerCard from "../../components/BannerCard/BannerCard";
+import SpecialProductsCard from "../../components/SpecialProductsCard/SpecialProductsCard";
+import PopularProductsCard from "../../components/PopularProductsSection/PopularProductsCard";
 
-import "swiper/css/grid";
 import "swiper/css";
-import products from "./temp-data.json";
+import "./Home.css";
+
+import products from "../temp-data.json";
+import productCard from "../data.json";
 
 function Home() {
-  console.log(products);
-  const FeaturedCollectionRef = useRef();
-  const SpecialProductsRef = useRef();
+  const featuredCollectionRef = useRef();
+  const specialProductsRef = useRef();
 
-  const ProductList = ({ products }) => {
-    // Group products into pairs
-    const groupedProducts = [];
-    for (let i = 0; i < products.length; i += 2) {
-      const pair = [products[i], products[i + 1]];
-      groupedProducts.push(pair);
-    }
-  };
+  const midpoint = Math.ceil(products.length / 2);
+
+  const firstHalf = products.slice(0, midpoint);
+  const secondHalf = products.slice(-midpoint);
 
   return (
     <>
       {/* Start Landing Page*/}
-      <section className="landing-page py-5">
+      <section className="landing-page py-5 bg-white">
         <div className="container">
-          <div className="row w-100">
+          <div className="row">
             <div id="carouselExampleIndicators" className="carousel slide col-lg-6 position-relative " data-bs-ride="carousel">
               <div className="carousel-indicators">
                 <button
@@ -56,7 +53,7 @@ function Home() {
               </div>
               <div className="mainland-text position-absolute handel-overflow pb-2">
                 <h4>Supercharged for pros.</h4>
-                <h5>Special sale</h5>
+                <h5>special sale</h5>
                 <p>
                   from $999.00 or $41.62/mo.
                   <br />
@@ -248,16 +245,16 @@ function Home() {
           <div className="d-flex align-items-center justify-content-between mb-4">
             <h3>Featured Collection</h3>
             <div>
-              <MdArrowBackIosNew onClick={() => FeaturedCollectionRef.current.slidePrev()} className="swiper-arrow me-2" size={23} />
-              <MdArrowForwardIos onClick={() => FeaturedCollectionRef.current.slideNext()} className="swiper-arrow" size={23} />
+              <MdArrowBackIosNew onClick={() => featuredCollectionRef.current.slidePrev()} className="swiper-arrow me-2" size={23} />
+              <MdArrowForwardIos onClick={() => featuredCollectionRef.current.slideNext()} className="swiper-arrow" size={23} />
             </div>
           </div>
 
           <Swiper
             spaceBetween={10}
-            slidesPerView={6}
+            slidesPerGroup={5}
             onSwiper={(swiper) => {
-              FeaturedCollectionRef.current = swiper;
+              featuredCollectionRef.current = swiper;
             }}
             breakpoints={{
               0: {
@@ -277,19 +274,10 @@ function Home() {
               },
             }}
           >
-            {[...Array(15)].map(() => {
+            {productCard.map((card) => {
               return (
                 <SwiperSlide className="swiper-card">
-                  <div>
-                    <Card
-                      data={{
-                        brand: "Havells",
-                        title: "Kids headphones bulk 10 pack multi colored for students",
-                        rate: "2.4",
-                        price: 200,
-                      }}
-                    />
-                  </div>
+                  <Card data={card} />
                 </SwiperSlide>
               );
             })}
@@ -297,7 +285,6 @@ function Home() {
         </div>
       </section>
       {/* end Featured Collection */}
-
       {/* start Banner section */}
       <section className="home-wrapper-2 py-5">
         <div className="container">
@@ -368,27 +355,21 @@ function Home() {
       </section>
       {/* end banner section */}
       {/* start Special Products  */}
-
       <section className="home-wrapper-2 py-5">
         <div className="container">
           <div className="d-flex align-items-center justify-content-between mb-4">
             <h3>Special Products</h3>
             <div>
-              <MdArrowBackIosNew onClick={() => SpecialProductsRef.current.slidePrev()} className="swiper-arrow me-2" size={23} />
-              <MdArrowForwardIos onClick={() => SpecialProductsRef.current.slideNext()} className="swiper-arrow" size={23} />
+              <MdArrowBackIosNew onClick={() => specialProductsRef.current.slidePrev()} className="swiper-arrow me-2" size={23} />
+              <MdArrowForwardIos onClick={() => specialProductsRef.current.slideNext()} className="swiper-arrow" size={23} />
             </div>
           </div>
 
           <Swiper
-            modules={[Grid]}
-            slidesPerView={2}
-            spaceBetween={20}
-            slidesPerColumn={2}
-            slidesPerGroup={3}
-            grid={{ rows: 2 }}
-            slidesPerColumnFill="row"
+            slidesPerView={3}
+            spaceBetween={10}
             onSwiper={(swiper) => {
-              SpecialProductsRef.current = swiper;
+              specialProductsRef.current = swiper;
             }}
             breakpoints={{
               0: {
@@ -402,32 +383,29 @@ function Home() {
               },
             }}
           >
-            {}
-
-            {[...Array(15)].map(() => {
-              return (
-                <SwiperSlide>
-                  <SpecialProductsCard
-                    margin="20px"
-                    data={{
-                      brand: "Havells",
-                      title: "Kids headphones bulk 10 pack multi colored for students",
-                      rate: "2.4",
-                      price: 200,
-                    }}
-                  />
-                </SwiperSlide>
-              );
-            })}
+            {firstHalf &&
+              firstHalf.map((product, index) => {
+                console.log(index);
+                return (
+                  <>
+                    <SwiperSlide className="p-1">
+                      <SpecialProductsCard margin="20px" data={firstHalf[index]} />
+                      <SpecialProductsCard data={secondHalf[index]} />
+                    </SwiperSlide>
+                  </>
+                );
+              })}
           </Swiper>
         </div>
       </section>
-
-      {/* <section className="home-wrapper-2 py-5">
-        <div className="container">
-        </div>
-      </section> */}
       {/* end Special Products  */}
+      {/* start Popular Products */}
+      <section className="home-wrapper-2 py-5">
+        <div className="container">
+          <PopularProductsCard />
+        </div>
+      </section>
+      {/* end Popular Products */}
     </>
   );
 }

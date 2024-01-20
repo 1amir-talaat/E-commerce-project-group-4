@@ -1,113 +1,111 @@
-{
-  "products": [
-    {
-      "img": "https://demo-digitic.myshopify.com/cdn/shop/products/01_287x.jpg?v=1655094851",
-      "subImgs": [
-        "https://demo-digitic.myshopify.com/cdn/shop/products/01_93x.jpg?v=1655094851 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/01_00_93x.jpg?v=1655094859 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/01_01_93x.jpg?v=1655094859 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/01_02_93x.jpg?v=1655094859 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/01_03_93x.jpg?v=1655094859 "
-      ],
-      "brand": "Havells",
-      "title": "Samsung Galaxy Note10+ Mobile Phone; Sim...",
-      "rate": "4.25",
-      "price": " $60.00 ",
-      "sale": "-20%"
-    },
-    {
-      "img": "https://demo-digitic.myshopify.com/cdn/shop/products/04_1dd5e4d2-861f-4f8e-8d28-28f5934a7e13_287x.jpg?v=1655095076",
-      "subImgs": [
-        "https://demo-digitic.myshopify.com/cdn/shop/products/04_1dd5e4d2-861f-4f8e-8d28-28f5934a7e13_93x.jpg?v=1655095076 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/04_00_93x.jpg?v=1655095087 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/04_01_93x.jpg?v=1655095087 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/04_02_93x.jpg?v=1655095087 "
-      ],
-      "brand": "Sony",
-      "title": "Samsung Galaxy Tab A SM-T295, 4G...",
-      "rate": "4.333333333",
-      "price": " $11.00 ",
-      "sale": "-56%"
-    },
-    {
-      "img": "https://demo-digitic.myshopify.com/cdn/shop/products/05_287x.jpg?v=1655095813",
-      "subImgs": [
-        "https://demo-digitic.myshopify.com/cdn/shop/products/05_93x.jpg?v=1655095813 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/05_00_93x.jpg?v=1655095821 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/05_01_93x.jpg?v=1655095821 "
-      ],
-      "brand": "Bajaj",
-      "title": "Hero Session Action Camera with 8MP...",
-      "rate": "5.0",
-      "price": " $16.00 ",
-      "sale": "-46%"
-    },
-    {
-      "img": "https://demo-digitic.myshopify.com/cdn/shop/products/10_287x.jpg?v=1655096098",
-      "subImgs": [
-        "https://demo-digitic.myshopify.com/cdn/shop/products/10_93x.jpg?v=1655096098 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/10_00_93x.jpg?v=1655096141 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/10_01_93x.jpg?v=1655096141 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/10_02_93x.jpg?v=1655096141 "
-      ],
-      "brand": "Havells",
-      "title": "BoAt Rockerz 400 Bluetooth Headset Pink",
-      "rate": "2.5",
-      "price": " $26.00 ",
-      "sale": "-25%"
-    },
-    {
-      "img": "https://demo-digitic.myshopify.com/cdn/shop/products/12_287x.jpg?v=1655096377",
-      "subImgs": [
-        "https://demo-digitic.myshopify.com/cdn/shop/products/12_93x.jpg?v=1655096377 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/12_00_93x.jpg?v=1655096387 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/12_01_93x.jpg?v=1655096387 "
-      ],
-      "brand": "Bajaj",
-      "title": "Beoplay A1 Portable Bluetooth Speaker with...",
-      "rate": "4.0",
-      "price": " $500.00 ",
-      "sale": "-33%"
-    },
-    {
-      "img": "https://demo-digitic.myshopify.com/cdn/shop/products/14_287x.jpg?v=1655096578",
-      "subImgs": [
-        "https://demo-digitic.myshopify.com/cdn/shop/products/14_93x.jpg?v=1655096578 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/14_00_93x.jpg?v=1655096590 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/14_01_93x.jpg?v=1655096590 "
-      ],
-      "brand": "Bajaj",
-      "title": "HD Resolution Indoor Wi-Fi Security Camera,...",
-      "rate": "5.0",
-      "price": " $60.00 ",
-      "sale": "-29%"
-    },
-    {
-      "img": "https://demo-digitic.myshopify.com/cdn/shop/products/17_287x.jpg?v=1655096912",
-      "subImgs": [
-        "https://demo-digitic.myshopify.com/cdn/shop/products/17_93x.jpg?v=1655096912 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/17_00_93x.jpg?v=1655096924 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/17_01_93x.jpg?v=1655096924 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/17_02_93x.jpg?v=1655096924 "
-      ],
-      "brand": "Havells",
-      "title": "Samsung Galaxy A23 128GB 6GB RAM...",
-      "rate": "5.0",
-      "price": " $30.00 ",
-      "sale": "-14%"
-    },
-    {
-      "img": "https://demo-digitic.myshopify.com/cdn/shop/products/21_287x.jpg?v=1655097438",
-      "subImgs": [
-        "https://demo-digitic.myshopify.com/cdn/shop/products/21_93x.jpg?v=1655097438 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/21_01_93x.jpg?v=1655097450 ",
-        "https://demo-digitic.myshopify.com/cdn/shop/products/21-02_93x.jpg?v=1655097450 "
-      ],
-      "brand": "Havells",
-      "title": "Smart Watch with Advanced Health Monitoring,...",
-      "rate": "5.0",
-      "price": " $250.00 ",
-      "sale": "-16%"
-    }
-  ]
-}
+[
+  {
+    "img": "https://demo-digitic.myshopify.com/cdn/shop/products/01_287x.jpg?v=1655094851",
+    "subImgs": [
+      "https://demo-digitic.myshopify.com/cdn/shop/products/01_93x.jpg?v=1655094851 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/01_00_93x.jpg?v=1655094859 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/01_01_93x.jpg?v=1655094859 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/01_02_93x.jpg?v=1655094859 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/01_03_93x.jpg?v=1655094859 "
+    ],
+    "brand": "Havells",
+    "title": "Samsung Galaxy Note10+ Mobile Phone; Sim...",
+    "rate": "4.25",
+    "price": " $60.00 ",
+    "sale": "-20%"
+  },
+  {
+    "img": "https://demo-digitic.myshopify.com/cdn/shop/products/04_1dd5e4d2-861f-4f8e-8d28-28f5934a7e13_287x.jpg?v=1655095076",
+    "subImgs": [
+      "https://demo-digitic.myshopify.com/cdn/shop/products/04_1dd5e4d2-861f-4f8e-8d28-28f5934a7e13_93x.jpg?v=1655095076 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/04_00_93x.jpg?v=1655095087 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/04_01_93x.jpg?v=1655095087 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/04_02_93x.jpg?v=1655095087 "
+    ],
+    "brand": "Sony",
+    "title": "Samsung Galaxy Tab A SM-T295, 4G...",
+    "rate": "4.333333333",
+    "price": " $11.00 ",
+    "sale": "-56%"
+  },
+  {
+    "img": "https://demo-digitic.myshopify.com/cdn/shop/products/05_287x.jpg?v=1655095813",
+    "subImgs": [
+      "https://demo-digitic.myshopify.com/cdn/shop/products/05_93x.jpg?v=1655095813 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/05_00_93x.jpg?v=1655095821 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/05_01_93x.jpg?v=1655095821 "
+    ],
+    "brand": "Bajaj",
+    "title": "Hero Session Action Camera with 8MP...",
+    "rate": "5.0",
+    "price": " $16.00 ",
+    "sale": "-46%"
+  },
+  {
+    "img": "https://demo-digitic.myshopify.com/cdn/shop/products/10_287x.jpg?v=1655096098",
+    "subImgs": [
+      "https://demo-digitic.myshopify.com/cdn/shop/products/10_93x.jpg?v=1655096098 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/10_00_93x.jpg?v=1655096141 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/10_01_93x.jpg?v=1655096141 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/10_02_93x.jpg?v=1655096141 "
+    ],
+    "brand": "Havells",
+    "title": "BoAt Rockerz 400 Bluetooth Headset Pink",
+    "rate": "2.5",
+    "price": " $26.00 ",
+    "sale": "-25%"
+  },
+  {
+    "img": "https://demo-digitic.myshopify.com/cdn/shop/products/12_287x.jpg?v=1655096377",
+    "subImgs": [
+      "https://demo-digitic.myshopify.com/cdn/shop/products/12_93x.jpg?v=1655096377 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/12_00_93x.jpg?v=1655096387 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/12_01_93x.jpg?v=1655096387 "
+    ],
+    "brand": "Bajaj",
+    "title": "Beoplay A1 Portable Bluetooth Speaker with...",
+    "rate": "4.0",
+    "price": " $500.00 ",
+    "sale": "-33%"
+  },
+  {
+    "img": "https://demo-digitic.myshopify.com/cdn/shop/products/14_287x.jpg?v=1655096578",
+    "subImgs": [
+      "https://demo-digitic.myshopify.com/cdn/shop/products/14_93x.jpg?v=1655096578 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/14_00_93x.jpg?v=1655096590 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/14_01_93x.jpg?v=1655096590 "
+    ],
+    "brand": "Bajaj",
+    "title": "HD Resolution Indoor Wi-Fi Security Camera,...",
+    "rate": "5.0",
+    "price": " $60.00 ",
+    "sale": "-29%"
+  },
+  {
+    "img": "https://demo-digitic.myshopify.com/cdn/shop/products/17_287x.jpg?v=1655096912",
+    "subImgs": [
+      "https://demo-digitic.myshopify.com/cdn/shop/products/17_93x.jpg?v=1655096912 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/17_00_93x.jpg?v=1655096924 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/17_01_93x.jpg?v=1655096924 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/17_02_93x.jpg?v=1655096924 "
+    ],
+    "brand": "Havells",
+    "title": "Samsung Galaxy A23 128GB 6GB RAM...",
+    "rate": "5.0",
+    "price": " $30.00 ",
+    "sale": "-14%"
+  },
+  {
+    "img": "https://demo-digitic.myshopify.com/cdn/shop/products/21_287x.jpg?v=1655097438",
+    "subImgs": [
+      "https://demo-digitic.myshopify.com/cdn/shop/products/21_93x.jpg?v=1655097438 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/21_01_93x.jpg?v=1655097450 ",
+      "https://demo-digitic.myshopify.com/cdn/shop/products/21-02_93x.jpg?v=1655097450 "
+    ],
+    "brand": "Havells",
+    "title": "Smart Watch with Advanced Health Monitoring,...",
+    "rate": "5.0",
+    "price": " $250.00 ",
+    "sale": "-16%"
+  }
+]

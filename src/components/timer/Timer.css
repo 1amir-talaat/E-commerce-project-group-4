@@ -1,0 +1,35 @@
+.countdown {
+  min-width: 30px;
+  height: 30px;
+  padding: 10px;
+  background-color: #ef3939;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-right: 5px;
+  font-size: 15px;
+  }
+
+.countdown:not(.last) ::before {
+  content: ":";
+  position: absolute;
+  top: 0;
+  font-weight: 600;
+  font-size: 17px;
+  right: -8px;
+  color: rgb(170, 170, 170) !important;
+}
+
+.days {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-right: 5px;
+}
+
+.days .days-text {
+  color: rgb(99, 99, 99) !important;
+  text-transform: capitalize;
+}
