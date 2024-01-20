@@ -4,7 +4,7 @@ import Home from "./pages/Home/Home";
 import ProductInfo from "./pages/ProductInfo/ProductInfo";
 import Cart from "./pages/Cart/Cart";
 import Products from "./pages/Products/Products";
-import CheckOut from "./components/CheckOut/CheckOut";
+import CheckOut from "./pages/CheckOut/CheckOut";
 function App() {
   return (
     <Routes>

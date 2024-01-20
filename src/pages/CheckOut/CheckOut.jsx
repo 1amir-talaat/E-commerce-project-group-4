@@ -5,7 +5,7 @@ import { CheckOutData } from "./usersData.js";
 import locations from "../../assets/images/2838912.png";
 import watch from "../../assets/images/watch.jpg";
 import credit from "../../assets/images/360_F_307140983_MDNd4Mtv5qgd3LAUK40ru1EPyYWL4elG.jpg";
-import Footer from "../footer/Footer.jsx";
+import Footer from "../../components/footer/Footer.jsx";
 import { Link } from "react-router-dom";
 
 function CheckOut() {
