@@ -1,0 +1,73 @@
+.collection-filters {
+  border-radius: 10px;
+  padding: 7px 15px;
+  box-shadow: 0 0 10px #0000001a;
+}
+
+.select {
+  width: 250px;
+}
+
+.select option {
+  color: #777777;
+}
+
+.select ::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.select ::-webkit-scrollbar-thumb {
+  background-color: #969696; /* Color of the scrollbar thumb */
+  border-radius: 4px;
+}
+
+.select ::-webkit-scrollbar-track {
+  background-color: #f8f9fa; /* Color of the scrollbar track */
+}
+
+.collection-sort h2 {
+  width: 55px;
+  color: #1c1b1b;
+  font-size: 15px;
+  margin: 0 1.3rem 0 0;
+  line-height: 34px;
+}
+
+.collection-grid .product-count {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  line-height: 22px;
+  font-weight: 400;
+  color: #777777;
+}
+
+.collection-grid .grid-btn {
+  width: 34px;
+  height: 34px;
+  transition: background 0.25s ease, fill 0.25s ease;
+  margin: 0 2px;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2f2f2;
+  padding: 5px;
+  position: relative;
+  display: flex;
+  float: left;
+  border-radius: 10px;
+  margin-right: 4px;
+}
+
+.collection-grid .grid-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.collection-grid .active {
+  background-color: var(--main-color);
+}
+
+.collection-grid .active svg {
+  fill: #fff;
+}
+
