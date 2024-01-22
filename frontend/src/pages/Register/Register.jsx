@@ -1,75 +1,40 @@
+// components/Register.js
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 const Register = () => {
-  const [firstName, setFirstNmae] = useState("");
-  const [secondName, setSecondNmae] = useState("");
+  const { login } = useAuth();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [msg, setMsg] = useState("");
-  const history = useNavigate();
 
-  const Register = async (e) => {
-    e.preventDefault();
+  const handleRegister = async () => {
     try {
-      await axios.post("http://localhost:5000/users", {
+      const response = await axios.post("http://localhost:5000/users", {
         first_name: firstName,
-        last_name: secondName,
+        last_name: lastName,
         email: email,
         password: password,
-        confPassword: confPassword,
       });
-      history("/");
+
+      const { token, user } = response.data;
+      login(user, token);
     } catch (error) {
-      if (error.response) {
-        setMsg(error.response.data.msg);
-      }
+      console.error("Registration error:", error.response.data);
     }
   };
 
   return (
-    <section className="hero has-background-grey-light is-fullheight is-fullwidth">
-      <div className="hero-body">
-        <div className="container">
-          <div className="columns is-centered">
-            <div className="column is-4-desktop">
-              <form onSubmit={Register} className="box">
-                <p className="has-text-centered">{msg}</p>
-                <div className="field mt-5">
-                  <label className="label">Name</label>
-                  <div className="controls">
-                    <input type="text" className="input" placeholder="Name" value={firstName} onChange={(e) => setFirstNmae(e.target.value)} />
-                  </div>
-                </div>
-                <div className="field mt-5">
-                  <label className="label">last_name</label>
-                  <div className="controls">
-                    <input type="text" className="input" placeholder="Name" value={secondName} onChange={(e) => setSecondNmae(e.target.value)} />
-                  </div>
-                </div>
-                <div className="field mt-5">
-                  <label className="label">Email</label>
-                  <div className="controls">
-                    <input type="text" className="input" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                  </div>
-                </div>
-                <div className="field mt-5">
-                  <label className="label">Password</label>
-                  <div className="controls">
-                    <input type="password" className="input" placeholder="******" value={password} onChange={(e) => setPassword(e.target.value)} />
-                  </div>
-                </div>
-
-                <div className="field mt-5">
-                  <button className="button is-success is-fullwidth">Register</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div>
+      <h2>Register</h2>
+      <input type="text" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+      <input type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+      <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <button onClick={handleRegister}>Register</button>
+    </div>
   );
 };
 

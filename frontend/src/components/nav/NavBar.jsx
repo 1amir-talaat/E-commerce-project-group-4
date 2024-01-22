@@ -13,10 +13,13 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
+import { useAuth } from "../../context/AuthContext";
+
 import tempData from "./temp-data.json";
 
 function Navbar() {
-  const [login, setLogin] = useState(true);
+  const { isAuthenticated, logout } = useAuth();
+
   const [wishlist, setWishlist] = useState(0);
 
   return (
@@ -41,7 +44,7 @@ function Navbar() {
                 {/* account */}
 
                 <div className="item">
-                  {login ? (
+                  {isAuthenticated ? (
                     <div className="dropdown border-0 position-relative">
                       <div className=" d-flex align-items-center dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         <div className="dropdown-text d-flex flex-column  ">
@@ -70,7 +73,7 @@ function Navbar() {
                             Profile
                           </a>
                         </div>
-                        <div className="text-dark" onClick={() => setLogin(!login)}>
+                        <div onClick={logout} className="text-dark">
                           Sign Out
                         </div>
                       </div>
@@ -78,9 +81,9 @@ function Navbar() {
                   ) : (
                     <div className=" d-flex align-items-center">
                       <img src="./src/assets/images/user.svg" alt="" />
-                      <a onClick={() => setLogin(!login)} className="nav-text ps-1">
+                      <Link to={"/login"} className="nav-text ps-1">
                         Login
-                      </a>
+                      </Link>
                     </div>
                   )}
                 </div>
