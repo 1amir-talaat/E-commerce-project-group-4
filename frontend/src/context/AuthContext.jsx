@@ -1,5 +1,4 @@
-// context/AuthContext.js
-import React, { createContext, useContext, useReducer } from "react";
+import React, { createContext, useContext, useReducer, useEffect } from "react";
 
 const AuthContext = createContext();
 
@@ -31,7 +30,12 @@ const authReducer = (state, action) => {
 };
 
 const AuthProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(authReducer, initialState);
+  const storedState = JSON.parse(localStorage.getItem("authState"));
+  const [state, dispatch] = useReducer(authReducer, storedState || initialState);
+
+  useEffect(() => {
+    localStorage.setItem("authState", JSON.stringify(state));
+  }, [state]);
 
   const login = (user, token) => {
     dispatch({ type: "LOGIN", payload: { user, token } });

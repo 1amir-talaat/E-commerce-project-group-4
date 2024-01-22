@@ -18,7 +18,7 @@ import { useAuth } from "../../context/AuthContext";
 import tempData from "./temp-data.json";
 
 function Navbar() {
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout, user } = useAuth();
 
   const [wishlist, setWishlist] = useState(0);
 
@@ -49,7 +49,7 @@ function Navbar() {
                       <div className=" d-flex align-items-center dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         <div className="dropdown-text d-flex flex-column  ">
                           <img src="./src/assets/images/user.svg" className="navbar-show" alt="" />
-                          <span className="nav-text navbar-hide">hello, name</span>
+                          <span className="nav-text navbar-hide overflow-hidden">{user.first_name}</span>
                           <span className="nav-text navbar-hide">My Account</span>
                         </div>
                         <TiArrowSortedDown className="drop-down" />

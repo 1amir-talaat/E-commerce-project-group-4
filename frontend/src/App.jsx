@@ -13,8 +13,8 @@ import { useAuth } from "./context/AuthContext";
 import Login from "./pages/Login/Login";
 
 function App() {
-  const { isAuthenticated } = useAuth();
-
+  const { isAuthenticated, user } = useAuth();
+  console.log(user);
   return (
     // <CartProvider>
     <Routes>
