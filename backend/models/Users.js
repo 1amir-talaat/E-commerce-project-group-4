@@ -60,10 +60,6 @@ const User = sequelize.define("User", {
       },
     },
   },
-  refreshToken: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
 });
 
 (async () => {

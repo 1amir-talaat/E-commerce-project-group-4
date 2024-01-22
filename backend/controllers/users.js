@@ -26,14 +26,21 @@ export const Register = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await User.create({
+    const newUser = await new User({
       first_name,
       last_name,
       email,
       password: hashedPassword,
     });
 
-    res.status(200).json({ msg: "Registration Successful" });
+    newUser.save();
+
+    const token = jwt.sign({ userId: newUser.id, email: newUser.email }, process.env.JWT_SECRET_KEY, { expiresIn: "30d" });
+    res.status(200).json({
+      token: token,
+      msg: "Registration Successful",
+      user: { first_name: newUser.dataValues.first_name, last_name: newUser.dataValues.last_name, email: newUser.dataValues.email },
+    });
   } catch (error) {
     console.error("Error during registration:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -55,7 +62,11 @@ export const Login = async (req, res) => {
     const matchedPassword = await bcrypt.compare(password, user.password);
 
     if (matchedPassword) {
-      res.status(200).json({ msg: "Login Successful" });
+      const token = jwt.sign({ userId: user.id, email: user.email }, process.env.JWT_SECRET_KEY, { expiresIn: "30d" });
+
+      res
+        .status(200)
+        .json({ token: token, msg: "Login Successful", user: { first_name: user.first_name, last_name: user.last_name, email: user.email } });
     } else {
       res.status(401).json({ error: "Login Failed" });
     }
