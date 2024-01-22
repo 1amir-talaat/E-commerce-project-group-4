@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 
-export const authenticateMiddleware = (req, res, next) => {
-  const token = req.headers.authorization.replace("Bearer ", "");
+const authenticateMiddleware = (req, res, next) => {
+  const token = req.headers.authorization;
 
   if (!token) {
     return res.status(401).json({ error: "Unauthorized - Token not provided" });
@@ -16,3 +16,5 @@ export const authenticateMiddleware = (req, res, next) => {
     next();
   });
 };
+
+export { authenticateMiddleware };
