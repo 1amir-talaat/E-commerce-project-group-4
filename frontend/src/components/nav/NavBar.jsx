@@ -14,13 +14,13 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 import { useAuth } from "../../context/AuthContext";
+import { useWishlist } from "../../context/WishlistContext";
 
 import tempData from "./temp-data.json";
 
 function Navbar() {
   const { isAuthenticated, logout, user } = useAuth();
-
-  const [wishlist, setWishlist] = useState(0);
+  const { wishlist } = useWishlist();
 
   return (
     <>
@@ -93,7 +93,7 @@ function Navbar() {
                   <div className=" d-flex align-items-center position-relative">
                     <div className="wishlist">
                       <img src="./src/assets/images/wishlist.svg" width={35} alt="" />
-                      {wishlist >= 1 && <span className="position-absolute translate-middle badge rounded-pill ">{wishlist}</span>}
+                      {wishlist.length >= 1 && <span className="position-absolute translate-middle badge rounded-pill ">{wishlist.length}</span>}
                     </div>
                     <span className="nav-text ps-2 navbar-hide">Wishlist</span>
                   </div>

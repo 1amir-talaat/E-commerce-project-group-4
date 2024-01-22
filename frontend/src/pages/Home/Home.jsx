@@ -66,9 +66,9 @@ function Home() {
             </div>
             <div className="col-lg-6">
               <div className=" d-flex flex-wrap justify-content-between align-items-center">
-                <div className="small-mainland position-relative">
+                <Link to={"/products"} className="small-mainland position-relative">
                   <img src="src/assets/images/catbanner-01.jpg" alt="" />
-                  <Link to={"/products"} className="small-mainland-text position-absolute">
+                  <div className="small-mainland-text position-absolute">
                     <h4>best sale</h4>
                     <h5 className="text-dark">Laptops Max</h5>
                     <p>
@@ -76,8 +76,8 @@ function Home() {
                       <br />
                       $64.62/mo.
                     </p>
-                  </Link>
-                </div>
+                  </div>
+                </Link>
                 <div className="small-mainland position-relative">
                   <img src="src/assets/images/catbanner-02.jpg " alt="" />
                   <div className="small-mainland-text position-absolute">

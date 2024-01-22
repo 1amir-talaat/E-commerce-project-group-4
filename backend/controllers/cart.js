@@ -20,7 +20,7 @@ export const addToCart = async (req, res) => {
 };
 
 export const getCartItems = async (req, res) => {
-  const { userId } = req.body;
+  const { userId } = req.params;
 
   try {
     const cartItems = await Cart.findAll({ where: { userId } });
