@@ -51,6 +51,7 @@
 }
 
 .card-icon {
+  cursor: pointer;
   padding: 5px;
   transition: 0.3s;
 }

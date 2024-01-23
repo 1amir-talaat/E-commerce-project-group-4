@@ -1,6 +1,11 @@
 import Product from "../models/Products.js";
 import ProductSubImage from "../models/ProductSubImage.js";
 
+const handleError = (res, error, statusCode = 500) => {
+  console.error("Error:", error);
+  res.status(statusCode).json({ error: "Internal Server Error" });
+};
+
 export const getAllProducts = async (req, res) => {
   try {
     const products = await Product.findAll({
@@ -14,8 +19,22 @@ export const getAllProducts = async (req, res) => {
     });
     res.json(products);
   } catch (error) {
-    console.error("Error fetching products:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    handleError(res, error);
+  }
+};
+
+export const getProductDetails = async (req, res) => {
+  const { productId } = req.params;
+
+  try {
+    const productDetails = await Product.findOne({ where: { id: productId } });
+    if (productDetails) {
+      res.status(200).json(productDetails);
+    } else {
+      res.status(404).json({ error: "Product not found" });
+    }
+  } catch (error) {
+    handleError(res, error);
   }
 };
 
@@ -39,7 +58,6 @@ export const createProduct = async (req, res) => {
 
     res.status(201).json({ msg: "Product created successfully", product: newProduct });
   } catch (error) {
-    console.error("Error creating product:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    handleError(res, error);
   }
 };
