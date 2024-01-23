@@ -142,10 +142,11 @@ function Productsdetails() {
               }}
             />
           </div>
-          <div className="subimages container col-12 row " id="imagemagnify">
+          <div className="subimages container col-12 row " id="imagemagnify-2">
             {product?.subImgs?.map((sub, index) => (
-              <div key={index} className="col-6">
+              <div key={index} className="col-6  mag-2">
                 <ReactImageMagnify
+                className="w-100"
                id="mag"
                   {...{
                     smallImage: {
@@ -165,6 +166,8 @@ function Productsdetails() {
             ))}
           </div>
         </div>
+        {/* End of First Section Photos */}
+        {/* Start of Product Info */}
         <div className="product-cardd ">
           <div className="product-info">
             {/* Dynamic: Title */}
@@ -179,9 +182,9 @@ function Productsdetails() {
               <hr />
             </div>
             <p>
-              <a href="#review" className="writing-rev">
+              <Link to="#review" className="text-dark writing-rev">
                 Write a review
-              </a>
+              </Link>
             </p>
             <hr />
             <div className="brand-info">
@@ -381,6 +384,7 @@ function Productsdetails() {
                         Shopping & Returns
                       </button>
                     </h2>
+                 
                     <div
                       id="collapseOne"
                       className="accordion-collapse collapse"
@@ -532,7 +536,8 @@ function Productsdetails() {
           </div>
         </div>
       </div>
-
+        {/* End of Product Info */}
+        {/* Start of  Desc*/}
       <div className="container-fluid desc-main">
         <h3 className="main-title">Description</h3>
 
@@ -598,6 +603,7 @@ function Productsdetails() {
           </div>
         </div>
       </div>
+      {/* End of Desc */}
     </>
   );
 }

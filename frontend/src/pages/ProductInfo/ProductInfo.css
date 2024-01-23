@@ -55,7 +55,19 @@
     height: 500px;
     z-index: 9999 important;
 }
-  
+
+#imagemagnify-2{
+    position: relative;
+    z-index: 1;
+    width: 600px;
+    height: 500px;
+    z-index: 9999 important;
+}
+
+.subimages {
+    width: 100%;
+    height: 100vh;
+}
   #mag {
     position: relative;
     z-index: 999;
@@ -66,10 +78,6 @@
     -moz-transition: 1s;
     -ms-transition: 1s;
     -o-transition: 1s;
-  }
-  
-  .subimages {
-    z-index: 0; 
   }
 
 .button {
@@ -604,15 +612,16 @@
 }
 
 .first-section {
-    width: 100%;
-    height: fit-content;
+    width: 100vw;
+    height: 100vh;
 }
 
 .first-big {
     text-align: center;
     width: 100%;
-    height: fit-content;
+    height: 100vh;
 }
+
  #mag{
     width: 100%;
     height: 100%;
@@ -810,4 +819,18 @@
     100% {
         transform: translateX(140px) rotate(-18deg);
     }
+}
+
+
+
+.accordion-item {
+    border: none;
+    border-bottom:  0.4px solid #dadada ;
+}
+.accordion-header {
+    border: none;
+}
+.accordion-header button {
+    background: none;
+    border: none;
 }
