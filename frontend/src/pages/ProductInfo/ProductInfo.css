@@ -6,9 +6,7 @@
     margin: 0%;
     box-sizing: border-box;
 }
-body {
-    background-color: #8b8b8b;
-}
+
 
 .main {
     padding: 10px;
@@ -17,10 +15,21 @@ body {
     width: 95vw;
     display: flex;
     border-radius: 20px;
-    border: 1px solid #ddd;
+    border: 2px solid #ddd;
     box-shadow: 1.5px 1.5px #eee, -1em 0 .4em #eee;
 }
 
+.subimages{
+    width: fit-content;
+    height: 100vh;
+    margin: 40px 0 0 0 important;
+}
+
+.subimages img{
+    object-fit: contain;
+    width: 100%;
+
+}
 .half {
     flex: 1;
 }
@@ -39,25 +48,30 @@ body {
     background-color: #eee;
 }
 
-/* #imagemagnify {
+#imagemagnify {
+    position: relative;
+    z-index: 1;
     width: 600px;
     height: 500px;
-} */
-
-#exampleModal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50% ,-50%);
-    width: 100vw;
-    height: 100%;
+    z-index: 9999 important;
 }
-
-#dialogu {
+  
+  #mag {
+    position: relative;
+    z-index: 999;
     width: 100%;
-}
+    height: 100%;
+    transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+  }
+  
+  .subimages {
+    z-index: 0; 
+  }
 
-/* Your CSS file or style tag */
 .button {
     margin-left: 10px;
     width: 65px;
@@ -76,19 +90,6 @@ body {
     background-color: darkgrey; 
   }
 
-#modal-main {
-    margin-top: 120px;
-    padding: 10px;
-    width: 100%;
-    height: 100%;
-}
-
-.modal-clas {
-    padding: 10px;
-    display: flex;
-    height: 100%;
-}
-
 .image-cart {
     width: 10rem;
     height: fit-content;
@@ -99,7 +100,6 @@ body {
     height: 100%;
 }
 
-
 .infocart {
     margin-left: 50px;
     font-size: 16px;
@@ -108,15 +108,23 @@ body {
     padding-top: 15px;
 }
 
+#dialogu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -60%);
+}
 #footer-modal{
     display: flex;
-    
     padding-top: 0.7rem;
     padding-left: 4rem;
     width: 100%;
     height: 4rem;
 }
-
+.imgcart {
+    width: 100%;
+    height: 100%;
+}
 #button-footer-close {
     padding-top: 0.4rem;
     text-align: center;
@@ -150,7 +158,7 @@ body {
     color: black;
 }
 
-.product-card {
+.product-cardd {
     width: 100%;
     overflow: hidden;
   }
@@ -250,8 +258,6 @@ body {
     text-align: center;
     cursor: pointer;
   }
-
-
   
   .radio-button input[type="radio"]:checked + label {
     background-color: brown;
@@ -272,6 +278,107 @@ body {
     height: fit-content;
 }
 
+.plusButton {
+    --plus_sideLength: 2.5rem;
+    --plus_topRightTriangleSideLength: 0.9rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    width: var(--plus_sideLength);
+    height: var(--plus_sideLength);
+    background-color: #fbbb6b;
+    overflow: hidden;
+  }
+  
+  .plusButton::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-width: 0 var(--plus_topRightTriangleSideLength) var(--plus_topRightTriangleSideLength) 0;
+    border-style: solid;
+    border-color: transparent white transparent transparent;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.2s;
+  }
+  
+  .plusButton:hover {
+    cursor: pointer;
+  }
+  
+  .plusButton:hover::before {
+    --plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
+  }
+  
+  .plusButton:focus-visible::before {
+    --plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
+  }
+  
+  .plusButton>.plusIcon {
+    fill: black;
+    width: calc(var(--plus_sideLength) * 0.7);
+    height: calc(var(--plus_sideLength) * 0.7);
+    z-index: 1;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.2s;
+  }
+  
+  .plusButton:hover>.plusIcon {
+    fill: black;
+    transform: rotate(180deg);
+  }
+  
+  .plusButton:focus-visible>.plusIcon {
+    fill: black;
+    transform: rotate(180deg);
+  }
+
+.button-quan {
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-quan span {
+    margin-left: 15px;
+}
+
+.minusButton {
+    width: 38px;
+    height: 37px;
+    background-color: #242c3c; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s;
+  }
+  
+  .minusButton:before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 2px; 
+    background-color: #ffffff; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+ 
+  .minusButton:hover {
+    background-color: #fbbb6b;
+    transform: scale(10px);
+  }
+  
+
+.button-quan div {
+    margin-left: 20px;
+}
 .quantity p {
     margin-right: 50px;
 }
@@ -351,27 +458,14 @@ body {
     transition: all 0.3s;
 }
 
-
-.wishlist {
-    display: flex;
-    width: 100%;
-    height:100%;
+.Wish {
+    margin: 0px 20px 20px 20px;
 }
 
-.wishlist .hearted input {
-    width: fit-content;
-    height: fit-content;
-    background: none;
+.Wish input {
+    margin: 0 5px 0 10px ;
     border: none;
-    font-size: 20px;
-    margin-top: 10px;
-    margin-right: 5px;
-    margin-left: 15px;
-}
-
-.wishlist .hearted input:focus {
-    color: red;
-    transition: all 0.2s;
+    background: none;
 }
 
 .accrdings {
@@ -439,8 +533,15 @@ body {
     margin-top: 125px;
 }
 
+
+.desc-main {
+    width: fit-content;
+    height: 100vh;
+} 
+
 .description {
     margin-top: 20px;
+    margin-bottom: 20px;
     float: left;
     padding: 30px;
     width: 100%;
@@ -459,7 +560,9 @@ body {
 
 .Reviews-div {
     margin-top: 20px;
+    margin-bottom: 20px;
     float: left;
+
     padding: 40px;
     width: 100%;
     border-radius: 40px;
@@ -500,24 +603,26 @@ body {
     text-decoration: grey;
 }
 
+.first-section {
+    width: 100%;
+    height: fit-content;
+}
+
 .first-big {
     text-align: center;
+    width: 100%;
+    height: fit-content;
 }
-.first-big img{
-    width: 90%;
+ #mag{
+    width: 100%;
+    height: 100%;
     transition: 1s;
     -webkit-transition: 1s;
     -moz-transition: 1s;
     -ms-transition: 1s;
     -o-transition: 1s;
 }
-.first-big img:hover{
-    transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    -o-transform: scale(1.1);
-}
+
 @media (max-width: 1100px) {
     .main{
         flex-wrap: wrap;
@@ -554,4 +659,155 @@ body {
 } */
 .first-section{
     width: 60rem;
+}
+
+
+
+.button {
+    --background: #fbbb6b;
+    --text: black;
+    --cart: #fbbb6b;
+    --tick: var(--background);
+    position: relative;
+    border: none;
+    background: red;
+    padding: 8px 28px;
+    border-radius: 8px;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    overflow: hidden;
+    cursor: pointer;
+    text-align: center;
+    min-width: 144px;
+    color: var(--text);
+    background: var(--background);
+    transform: scale(var(--scale, 1));
+    transition: transform .4s cubic-bezier(.36, 1.01, .32, 1.27);
+    &:active {
+        --scale: .95;
+    }
+    span {
+        font-size: 14px;
+        font-weight: 500;
+        display: block;
+        position: relative;
+        padding-left: 24px;
+        margin-left: -8px;
+        line-height: 26px;
+        transform: translateY(var(--span-y, 0));
+        transition: transform .7s ease;
+        &:before,
+        &:after {
+            content: '';
+            width: var(--w, 2px);
+            height: var(--h, 14px);
+            border-radius: 1px;
+            position: absolute;
+            left: var(--l, 8px);
+            top: var(--t, 6px);
+            background: currentColor;
+            transform: scale(.75) rotate(var(--icon-r, 0deg)) translateY(var(--icon-y, 0));
+            transition: transform .65s ease .05s;
+        }
+        &:after {
+            --w: 14px;
+            --h: 2px;
+            --l: 2px;
+            --t: 12px;
+        }
+    }
+    .cart {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -13px 0 0 -18px;
+        transform-origin: 12px 23px;
+        transform: translateX(-120px) rotate(-18deg);
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+        }
+        &:before {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            box-shadow: inset 0 0 0 2px var(--cart);
+            bottom: 0;
+            left: 9px;
+            filter: drop-shadow(11px 0 0 var(--cart));
+        }
+        &:after {
+            width: 16px;
+            height: 9px;
+            background: var(--cart);
+            left: 9px;
+            bottom: 7px;
+            transform-origin: 50% 100%;
+            transform: perspective(4px) rotateX(-6deg) scaleY(var(--fill, 0));
+            transition: transform 1.2s ease var(--fill-d);
+        }
+        svg {
+            z-index: 1;
+            width: 36px;
+            height: 26px;
+            display: block;
+            position: relative;
+            fill: none;
+            stroke: var(--cart);
+            stroke-width: 2px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            polyline {
+                &:last-child {
+                    stroke: var(--tick);
+                    stroke-dasharray: 10px;
+                    stroke-dashoffset: var(--offset, 10px);
+                    transition: stroke-dashoffset .4s ease var(--offset-d);
+                }
+            }
+        }
+    }
+    &.loading {
+        --scale: .95;
+        --span-y: -32px;
+        --icon-r: 180deg;
+        --fill: 1;
+        --fill-d: .8s;
+        --offset: 0;
+        --offset-d: 1.73s;
+        .cart {
+            animation: cart 3.4s linear forwards .2s;
+        }
+    }
+}
+
+@keyframes cart {
+    12.5% {
+        transform: translateX(-60px) rotate(-18deg);
+    }
+    25%,
+    45%,
+    55%,
+    75% {
+        transform: none;
+    }
+    50% {
+        transform: scale(.9);
+    }
+    44%,
+    56% {
+        transform-origin: 12px 23px;
+    }
+    45%,
+    55% {
+        transform-origin: 50% 50%;
+    }
+    87.5% {
+        transform: translateX(70px) rotate(-18deg);
+    }
+    100% {
+        transform: translateX(140px) rotate(-18deg);
+    }
 }

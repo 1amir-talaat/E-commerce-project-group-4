@@ -1,4 +1,6 @@
+import React, { useState } from "react";
 import { MdStarRate } from "react-icons/md";
+import { Link, useNavigate  } from "react-router-dom";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoMdHeart } from "react-icons/io";
 import { MdAddShoppingCart } from "react-icons/md";
@@ -6,16 +8,23 @@ import { FaCheck } from "react-icons/fa";
 
 import { FaEye } from "react-icons/fa";
 
-import React, { useState } from "react";
+
 import "./card.css";
 
 function Card(props) {
   const [hurt, setHurt] = useState(false);
   const [cart, setCart] = useState(false);
 
+  const navigate  = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`productinfo/${props.data.id}`);
+  };
+
   return (
     <>
-      <div className="product-card position-relative p-2 " style={props.grid == 4 ? { display: "flex" } : {}}>
+    
+      <div onClick={handleCardClick} className="product-card position-relative p-2 " style={props.grid == 4 ? { display: "flex" } : {}}>
         <div className="product-img" style={props.grid == 4 ? { height: "240px", width: "35%" } : {}}>
           <img src={props.data.img} alt="" />
         </div>
@@ -51,3 +60,6 @@ function Card(props) {
 }
 
 export default Card;
+
+
+
