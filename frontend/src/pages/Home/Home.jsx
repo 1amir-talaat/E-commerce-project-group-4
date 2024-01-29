@@ -386,7 +386,7 @@ function Home() {
             }}
           >
             {firstHalf &&
-              firstHalf.map((product, index) => {
+              firstHalf.map((_, index) => {
                 console.log(index);
                 return (
                   <>

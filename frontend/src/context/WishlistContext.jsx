@@ -40,27 +40,31 @@ const WishlistProvider = ({ children }) => {
     }
   }, [user]);
 
-  const addToWishlist = async (productId) => {
+  const addToWishlist = async (productId, loader) => {
     try {
+      loader(true);
       const response = await api.post("/wishlist/add", { userId: user.id, productId });
       dispatchWishlist({ type: "ADD_TO_WISHLIST", payload: response.data.wishlistItem });
+      loader(false);
     } catch (error) {
       console.error("Error adding to wishlist:", error);
       throw error;
     }
   };
 
-  const removeFromWishlist = async (productId) => {
+  const removeFromWishlist = async (productId, loader) => {
     try {
+      loader(true);
       await api.delete(`/wishlist/remove/${productId}`, { data: { userId: user.id } });
       dispatchWishlist({ type: "REMOVE_FROM_WISHLIST", payload: productId });
+      loader(false);
     } catch (error) {
       console.error("Error removing item from wishlist:", error);
       throw error;
     }
   };
 
-  return <WishlistContext.Provider value={{ wishlist, dispatchWishlist, addToWishlist, removeFromWishlist }}>{children}</WishlistContext.Provider>;
+  return <WishlistContext.Provider value={{ wishlist, addToWishlist, removeFromWishlist }}>{children}</WishlistContext.Provider>;
 };
 
 const useWishlist = () => {

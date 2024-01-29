@@ -1,35 +1,20 @@
-import React, { useState } from "react";
 import { MdStarRate } from "react-icons/md";
-<<<<<<< HEAD
-import { Link, useNavigate  } from "react-router-dom";
-import { IoIosHeartEmpty } from "react-icons/io";
-import { IoMdHeart } from "react-icons/io";
-=======
 import { IoIosHeartEmpty, IoMdHeart } from "react-icons/io";
->>>>>>> 9724e1fe7c0b4898cc580629e0f46dc2d8bfd4f8
 import { MdAddShoppingCart } from "react-icons/md";
 import { FaCheck, FaEye } from "react-icons/fa";
 
 import { useState, useEffect } from "react";
 import { useWishlist } from "../../context/WishlistContext";
+import { TailSpin } from "react-loader-spinner";
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 9724e1fe7c0b4898cc580629e0f46dc2d8bfd4f8
 import "./card.css";
 
 function Card(props) {
   const { addToWishlist, removeFromWishlist, wishlist } = useWishlist();
   const [hurt, setHurt] = useState(false);
+  const [wishlistLoader, setWishlistLoader] = useState(false);
   const [cart, setCart] = useState(false);
 
-<<<<<<< HEAD
-  const navigate  = useNavigate();
-
-  const handleCardClick = () => {
-    navigate(`productinfo/${props.data.id}`);
-=======
   const productIdToCheck = 2;
 
   useEffect(() => {
@@ -39,20 +24,18 @@ function Card(props) {
   const handleWishlistAction = async () => {
     try {
       if (hurt) {
-        await removeFromWishlist(productIdToCheck);
+        await removeFromWishlist(productIdToCheck, setWishlistLoader);
       } else {
-        await addToWishlist(productIdToCheck);
+        await addToWishlist(productIdToCheck, setWishlistLoader);
       }
     } catch (error) {
       console.error("Error updating wishlist:", error);
     }
->>>>>>> 9724e1fe7c0b4898cc580629e0f46dc2d8bfd4f8
   };
 
   return (
     <>
-    
-      <div onClick={handleCardClick} className="product-card position-relative p-2 " style={props.grid == 4 ? { display: "flex" } : {}}>
+      <div className="product-card position-relative p-2 " style={props.grid == 4 ? { display: "flex" } : {}}>
         <div className="product-img" style={props.grid == 4 ? { height: "240px", width: "35%" } : {}}>
           <img src={props.data.img} alt="" />
         </div>
@@ -68,13 +51,24 @@ function Card(props) {
           <div className="product-price">{props.data.price}$</div>
         </div>
         <div className="product-hover position-absolute top-0 gap-5 gap-sm-1 end-0 p-2">
-          {hurt ? (
+          {wishlistLoader ? (
+            <TailSpin
+              visible={true}
+              height="26"
+              width="26"
+              color="#f08804"
+              ariaLabel="tail-spin-loading"
+              radius="1"
+              wrapperStyle={{width:"35px", height:"35px"}}
+              className="rounded-pill card-icon mb-1"
+            />
+          ) : hurt ? (
             <IoMdHeart onClick={handleWishlistAction} size={35} color="f08804" className="rounded-pill card-icon mb-1" />
           ) : (
             <IoIosHeartEmpty onClick={handleWishlistAction} size={35} fillOpacity={0.9} className="rounded-pill card-icon mb-1" />
           )}
 
-          <div className="hide d-flex align-items-center flex-column">
+          <div className="hide d-flex mt-1 align-items-center flex-column">
             {cart ? (
               <FaCheck fillOpacity={0.9} size={33} className="rounded-pill card-icon mb-1" />
             ) : (
@@ -89,6 +83,3 @@ function Card(props) {
 }
 
 export default Card;
-
-
-
