@@ -2,6 +2,7 @@
   box-shadow: 0 0 10px #0000001a;
   border-radius: 10px;
   background: #fff;
+  margin: 0 !important;
 }
 
 .product-img {
@@ -53,6 +54,7 @@
   cursor: pointer;
   padding: 5px;
   transition: 0.3s;
+
 }
 
 .card-icon:hover {
@@ -88,7 +90,6 @@
     font-size: 13px;
     margin: 0 0 10px;
   }
-
   .product-info .product-title {
     font-size: 15px;
     line-height: 20px;
@@ -104,3 +105,4 @@
     padding-bottom: 8px;
   }
 }
+

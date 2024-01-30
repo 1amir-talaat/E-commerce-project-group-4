@@ -1,0 +1,207 @@
+.home-account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  background-color: white;
+}
+
+.home-account p {
+  font-weight: 400;
+}
+
+.home-account p span {
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.loginParent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(229, 230, 233, 0.623);
+  padding: 70px 100px;
+}
+
+.loginCard {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 55px 50px 55px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  width: fit-content;
+}
+
+h4 {
+  color: rgb(121, 117, 117);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.parentInput {
+  margin-bottom: 30px;
+}
+
+.parentInput input {
+  width: 500px;
+  padding: 10px;
+  outline: none;
+  border: none;
+  background-color: rgba(233, 233, 233, 0.596);
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.parentInput input::placeholder {
+  color: rgb(146, 145, 145);
+  letter-spacing: 1px;
+}
+
+.error-message {
+  color: red;
+  font-size: 15px;
+  text-align: start;
+  width: 500px;
+}
+
+.btnsLink {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.btnLogin {
+  text-align: center;
+  padding: 15px 40px;
+  background-color: #232f3e;
+  color: rgb(255, 255, 255);
+  border-radius: 30px;
+  border: none;
+  font-size: 20px;
+  margin-right: 25px;
+  margin-bottom: -15px;
+  margin-top: -20px;
+}
+
+.btnLogin:hover {
+  background-color: rgba(255, 166, 0, 0.753);
+}
+
+.aTagLogin {
+  text-decoration: none;
+  color: black;
+}
+
+.linkLogin {
+  color: black;
+}
+
+@media screen and (max-width: 768px) {
+  .loginParent {
+    padding: 60px;
+  }
+  form {
+    padding: 40px 40px 50px 40px;
+  }
+}
+
+@media screen and (max-width: 615px) {
+  .loginParent {
+    padding: 60px;
+  }
+
+  form {
+    padding: 40px 30px 40px 30px;
+  }
+  .btnsLink {
+    margin-bottom: 15px;
+  }
+}
+@media screen and (max-width: 580px) {
+  .loginParent {
+    padding: 50px 70px;
+  }
+
+  form {
+    padding: 35px 25px 35px 25px;
+  }
+}
+@media screen and (max-width: 570px) {
+  .loginParent {
+    padding: 30px 70px;
+  }
+
+  form {
+    padding: 30px 20px 30px 20px;
+  }
+  .parentInput input {
+    width: 450px;
+  }
+  .error-message {
+    width: 450px;
+  }
+}
+@media screen and (max-width: 510px) {
+  .loginParent {
+    padding: 60px;
+  }
+
+  form {
+    padding: 30px 20px 30px 20px;
+  }
+
+  .parentInput input {
+    width: 400px;
+  }
+  .error-message {
+    width: 400px;
+  }
+}
+@media screen and (max-width: 460px) {
+  .loginParent {
+    padding: 60px;
+  }
+
+  form {
+    padding: 30px 20px 30px 20px;
+  }
+
+  .parentInput input {
+    width: 350px;
+  }
+  .btnsLink {
+    .btnLogin {
+      padding: 15px 30px;
+    }
+  }
+  .error-message {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .loginParent {
+    padding: 60px;
+  }
+
+  form {
+    padding: 30px 20px 30px 20px;
+  }
+
+  .parentInput input {
+    width: 300px;
+  }
+  .error-message {
+    width: 300px;
+  }
+
+  .btnsLink {
+    .btnLogin {
+      padding: 18px 28px;
+      font-size: 19px;
+    }
+  }
+}

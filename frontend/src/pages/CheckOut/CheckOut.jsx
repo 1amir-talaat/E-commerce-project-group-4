@@ -7,8 +7,12 @@ import watch from "../../assets/images/watch.jpg";
 import credit from "../../assets/images/360_F_307140983_MDNd4Mtv5qgd3LAUK40ru1EPyYWL4elG.jpg";
 import Footer from "../../components/footer/Footer.jsx";
 import { Link } from "react-router-dom";
+import { useCart } from "../../context/CartContext.jsx";
 
 function CheckOut() {
+  const { items, total } = useCart();
+  console.log(items, total);
+  console.log(items);
   const [showModal, setShowModal] = useState(false);
   const [paymentType, setPaymentType] = useState("cash");
   const [month, setMonth] = useState("");
@@ -242,31 +246,27 @@ function CheckOut() {
             <br />
             <p className="titleSection">Your Order</p>
             <div className="seccontainer order">
-              {CheckOutData.map((user) => {
-                return user.cart.map((item) => {
-                  return (
-                    <div className={`${item.name_product} item`} key={item.id}>
-                      <div className="productcontainer">
-                        <div className="badgee position-relative">
-                          <span
-                            style={{ top: "20px", left: "70px", padding: "7px", fontSize: "15px" }}
-                            className="position-absolute translate-middle badge rounded-pill bg-secondary"
-                          >
-                            {item.number_product}
-                          </span>
-                          <img src={watch} alt="Can't Find the source" />
-                        </div>
-                        <div className="dataOfProduct">
-                          <p>{item.category_name}</p>
-                          <p>{item.name_product}</p>
-                          <p>
-                            {user.Currency}: <span style={{ color: "green" }}>{item.price_product}</span>
-                          </p>
-                        </div>
+              {items.map((item) => {
+                return (
+                  <div className={`${item.title} item`} key={item.id}>
+                    <div className="productcontainer">
+                      <div className="badgee position-relative">
+                        <span
+                          style={{ top: "20px", left: "70px", padding: "7px", fontSize: "15px" }}
+                          className="position-absolute translate-middle badge rounded-pill bg-secondary"
+                        >
+                          {item.quantity}
+                        </span>
+                        <img src={watch} alt="Can't Find the source" />
+                      </div>
+                      <div className="dataOfProduct">
+                        <p>{item.Product.brand}</p>
+                        <p>{item.Product.title}</p>
+                        <p>{/* {user.Currency}: <span style={{ color: "green" }}>{item.price_product}</span> */}</p>
                       </div>
                     </div>
-                  );
-                });
+                  </div>
+                );
               })}
             </div>
             <br />
@@ -293,14 +293,7 @@ function CheckOut() {
               <h3 style={{ padding: "10px" }}>Our Details</h3>
               <div className="subTotal">
                 <p>SubTotal</p>
-                <p>
-                  {CheckOutData[0].Currency + " "}
-                  {CheckOutData[0].cart
-                    .reduce((acc, curr) => {
-                      return acc + parseFloat(curr.price_product);
-                    }, 0)
-                    .toFixed(2)}
-                </p>
+                <p>EGP {total}</p>
               </div>
               <div className="shippingFree subTotal">
                 <p>Shipping</p>
@@ -323,15 +316,7 @@ function CheckOut() {
               <div className="subTotal">
                 <p style={{ fontWeight: "700" }}>Total</p>
                 <p style={{ color: "green", fontWeight: "700" }}>
-                  <p style={{ color: "green", fontWeight: "700", fontSize: "24px" }}>
-                    {CheckOutData[0].Currency +
-                      (+CheckOutData[0].cart
-                        .reduce((acc, curr) => {
-                          return acc + parseFloat(curr.price_product);
-                        }, 0)
-                        .toFixed(2) +
-                        15)}
-                  </p>
+                  <p style={{ color: "green", fontWeight: "700", fontSize: "24px" }}>{total + 15}</p>
                 </p>
               </div>
             </div>

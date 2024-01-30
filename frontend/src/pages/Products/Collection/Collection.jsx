@@ -50,7 +50,6 @@ function Collection(props) {
       case "sell-descending":
         return products.slice().sort((a, b) => b.sell - a.sell);
       default:
-        // Default: return unsorted products
         return products;
     }
   };

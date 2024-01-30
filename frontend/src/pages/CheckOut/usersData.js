@@ -1,11 +1,11 @@
 export let CheckOutData = [
     {
         "id": "",
-        "name": "Yehia",
+        "name": "",
         "email": "",
-        "address": "mataria city plane",
-        "city": "Cairo",
-        "phone": "0123456789",
+        "address": "",
+        "city": "",
+        "phone": "",
         "Currency": "EGP ",
         "cart": [
             {

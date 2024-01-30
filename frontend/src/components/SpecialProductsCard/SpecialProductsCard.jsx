@@ -1,42 +1,70 @@
 import { MdStarRate } from "react-icons/md";
-import { IoIosHeartEmpty } from "react-icons/io";
-import { IoMdHeart } from "react-icons/io";
+import { IoIosHeartEmpty, IoMdHeart } from "react-icons/io";
 import { MdAddShoppingCart } from "react-icons/md";
-import { MdArrowForwardIos } from "react-icons/md";
+import { FaCheck, FaEye } from "react-icons/fa";
 import { MdArrowBackIosNew } from "react-icons/md";
-import { FaCheck } from "react-icons/fa";
-
+import { useState } from "react";
+import { useWishlist } from "../../context/WishlistContext";
+import { TailSpin } from "react-loader-spinner";
+import { MdArrowForwardIos } from "react-icons/md";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { FaEye } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import "./SpecialProductsCard.css";
 
-import React, { useState, useRef } from "react";
+import { useRef } from "react";
 import Timer from "../timer/Timer";
 
 function SpecialProductsCard(props) {
+  console.log(props);
+  const { addToWishlist, removeFromWishlist, wishlist } = useWishlist();
   const [hurt, setHurt] = useState(false);
+  const [wishlistLoader, setWishlistLoader] = useState(false);
+
   const [cart, setCart] = useState(false);
   const card = useRef();
-  const [mainImg, setMainImg] = useState(props.data.img);
+  const [mainImg, setMainImg] = useState(props.data.mainImage);
 
-  const time = new Date();
-  time.setSeconds(time.getSeconds() + 600);
+  const time = new Date(props.data.saleEndDate);
+
+  const handleWishlistAction = async () => {
+    try {
+      if (hurt) {
+        await removeFromWishlist(productIdToCheck, setWishlistLoader);
+      } else {
+        await addToWishlist(productIdToCheck, setWishlistLoader);
+      }
+    } catch (error) {
+      console.error("Error updating wishlist:", error);
+    }
+  };
 
   return (
     <>
-      <div className={`product-card special-products-card position-relative`} style={props.margin && { marginBottom: props.margin }}>
+      <div className={`product-card special-products-card position-relative ${props.margin ? "mb-2" : ""}`}>
         <div className="d-flex justify-content-center align-items-center">
           <div className="product-img w-50">
             <div className="main-img position-relative">
               <img src={mainImg} alt="" />
-              <div className="product-hover position-absolute top-0 gap-5 end-0 p-2">
-                {hurt ? (
-                  <IoMdHeart onClick={() => setHurt(!hurt)} size={35} color="f08804" className="rounded-pill card-icon mb-1" />
+              <div className="product-hover position-absolute top-0 gap-5 gap-sm-1 end-0 p-2">
+                {wishlistLoader ? (
+                  <TailSpin
+                    visible={true}
+                    height="26"
+                    width="26"
+                    color="#f08804"
+                    ariaLabel="tail-spin-loading"
+                    radius="1.8"
+                    wrapperStyle={{ width: "35px", height: "35px" }}
+                    className="rounded-pill card-icon"
+                  />
+                ) : hurt ? (
+                  <IoMdHeart onClick={handleWishlistAction} size={35} color="f08804" className="rounded-pill card-icon mb-1" />
                 ) : (
-                  <IoIosHeartEmpty onClick={() => setHurt(!hurt)} size={35} fillOpacity={0.9} className="rounded-pill card-icon mb-1" />
+                  <IoIosHeartEmpty onClick={handleWishlistAction} size={35} fillOpacity={0.9} className="rounded-pill card-icon mb-1" />
                 )}
-                <div className="hide d-flex align-items-center flex-column">
+
+                <div className="hide d-flex mt-1 align-items-center flex-column">
                   {cart ? (
                     <FaCheck fillOpacity={0.9} size={33} className="rounded-pill card-icon mb-1" />
                   ) : (
@@ -56,11 +84,11 @@ function SpecialProductsCard(props) {
                     card.current = swiper;
                   }}
                 >
-                  {props.data.subImgs.map((src) => {
+                  {props.data.subImgs.map((src, index) => {
                     return (
-                      <SwiperSlide onClick={() => setMainImg(src)}>
+                      <SwiperSlide key={index} onClick={() => setMainImg(src.imageUrl)}>
                         <div className="sub-img">
-                          <img src={src} alt="" className="w-100" />
+                          <img src={src.imageUrl} alt="" className="w-100" />
                         </div>
                       </SwiperSlide>
                     );
@@ -77,7 +105,7 @@ function SpecialProductsCard(props) {
             <div className="product-rate">
               {[...Array(5)].map((star, index) => {
                 index += 1;
-                return Math.floor(props.data.rate) >= index ? <MdStarRate fill="#ffc30e" /> : <MdStarRate fill="gray" fillOpacity={0.339} />;
+                return Math.floor(props.data.rating) >= index ? <MdStarRate fill="#ffc30e" /> : <MdStarRate fill="gray" fillOpacity={0.339} />;
               })}
             </div>
             <p className="product-price">{props.data.price}$</p>
@@ -85,9 +113,9 @@ function SpecialProductsCard(props) {
               <Timer expiryTimestamp={time} />
             </div>
 
-            <a href="#" className="product-btn btn btn-secondary">
+            <Link to={`product/${props.id}`} className="product-btn btn btn-secondary">
               Details
-            </a>
+            </Link>
           </div>
         </div>
       </div>

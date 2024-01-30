@@ -15,13 +15,18 @@ import "swiper/css/scrollbar";
 
 import { useAuth } from "../../context/AuthContext";
 import { useWishlist } from "../../context/WishlistContext";
+import { useCart } from "../../context/CartContext";
 
 import tempData from "./temp-data.json";
 
 function Navbar() {
   const { isAuthenticated, logout, user } = useAuth();
-  const { wishlist } = useWishlist();
-
+  let { itemCount } = useCart();
+  let { wishlist } = useWishlist();
+  if (!isAuthenticated) {
+    itemCount = 0;
+    wishlist = 0;
+  }
   return (
     <>
       <nav className="navbar text-white">
@@ -55,7 +60,7 @@ function Navbar() {
                         <TiArrowSortedDown className="drop-down" />
                       </div>
                       <div className="text-center dropdown-menu progile-detales position-absolute">
-                        <div className="dropdown-item-container d-flex flex-column text-dark">
+                        {/* <div className="dropdown-item-container d-flex flex-column text-dark">
                           <a className="link text-dark">
                             <img src="https://f.nooncdn.com/s/app/com/noon/icons/orders_menu_icon_v3.svg" className="" />
                             Orders
@@ -72,7 +77,7 @@ function Navbar() {
                             <img src="https://f.nooncdn.com/s/app/com/noon/icons/profile_menu_icon_v3.svg" className="" />
                             Profile
                           </a>
-                        </div>
+                        </div> */}
                         <div onClick={logout} className="text-dark">
                           Sign Out
                         </div>
@@ -89,7 +94,7 @@ function Navbar() {
                 </div>
 
                 {/* Wishlist */}
-                <div className="item">
+                <Link to={"/wishlist"} className="item">
                   <div className=" d-flex align-items-center position-relative">
                     <div className="wishlist">
                       <img src="./src/assets/images/wishlist.svg" width={35} alt="" />
@@ -97,16 +102,16 @@ function Navbar() {
                     </div>
                     <span className="nav-text ps-2 navbar-hide">Wishlist</span>
                   </div>
-                </div>
+                </Link>
 
-                <div className="item">
+                <Link to={"/cart"} className="item">
                   {/* cart */}
                   <div className="d-flex position-relative ">
                     <div className="cart-icon" />
                     <span className="cart-text">cart</span>
-                    <span className="cart-number">10</span>
+                    <span className="cart-number">{itemCount}</span>
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
           </div>

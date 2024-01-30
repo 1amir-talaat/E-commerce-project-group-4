@@ -26,6 +26,14 @@ const Product = sequelize.define("Product", {
     allowNull: false,
   },
   mainImage: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  brand: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  categorie: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -37,6 +45,13 @@ const Product = sequelize.define("Product", {
       max: 5,
     },
   },
+  ratingCount: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    validate: {
+      min: 0,
+    },
+  },
   sale: {
     type: DataTypes.FLOAT,
     allowNull: true,
@@ -45,17 +60,25 @@ const Product = sequelize.define("Product", {
       max: 100,
     },
   },
+  saleEndDate: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
 });
+
+Product.prototype.hasActiveOffer = function () {
+  return this.offerPrice !== null && this.offerEndDate !== null && this.offerPrice < this.price && new Date(this.offerEndDate) > new Date();
+};
 
 Product.hasMany(ProductSubImage, { as: "subImgs", foreignKey: "productId" });
 
-(async () => {
+async () => {
   try {
     await Product.sync({ force: false });
     console.log("Product model synced with database");
   } catch (err) {
     console.error("Error syncing Product model with database:", err);
   }
-})();
+};
 
 export default Product;

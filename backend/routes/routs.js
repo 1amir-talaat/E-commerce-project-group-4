@@ -15,7 +15,7 @@ router.post("/users/login", Login);
 // Products Routes
 router.get("/products", getAllProducts);
 router.get("/products/:productId", getProductDetails);
-router.post("/products", authenticateMiddleware, createProduct);
+router.post("/products", createProduct);
 
 // Cart Routes
 router.post("/cart/add", addToCart);

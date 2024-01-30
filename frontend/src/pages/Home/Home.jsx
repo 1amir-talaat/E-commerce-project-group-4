@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import React, { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { MdArrowForwardIos } from "react-icons/md";
@@ -13,17 +13,24 @@ import PopularProductsCard from "../../components/PopularProductsSection/Popular
 import "swiper/css";
 import "./Home.css";
 
-import products from "../temp-data.json";
-import productCard from "../data.json";
+import { useProduct } from "../../context/ProductsContext";
 
 function Home() {
   const featuredCollectionRef = useRef();
   const specialProductsRef = useRef();
 
-  const midpoint = Math.ceil(products.length / 2);
+  const { products } = useProduct();
 
-  const firstHalf = products.slice(0, midpoint);
-  const secondHalf = products.slice(-midpoint);
+  const offerProducts = products.filter((product) => {
+    return product.sale != null;
+  });
+
+  
+  const midpoint = Math.ceil(offerProducts.length / 2);
+  
+  const firstHalf = offerProducts.slice(0, midpoint);
+  const secondHalf = offerProducts.slice(-midpoint);
+  console.log(secondHalf);
 
   return (
     <>
@@ -276,10 +283,10 @@ function Home() {
               },
             }}
           >
-            {productCard.map((card) => {
+            {products.map((card) => {
               return (
-                <SwiperSlide className="swiper-card">
-                  <Card data={card} />
+                <SwiperSlide key={card.id} className="swiper-card">
+                  <Card data={card} id={card.id} />
                 </SwiperSlide>
               );
             })}
@@ -390,9 +397,9 @@ function Home() {
                 console.log(index);
                 return (
                   <>
-                    <SwiperSlide className="p-1">
-                      <SpecialProductsCard margin="20px" data={firstHalf[index]} />
-                      <SpecialProductsCard data={secondHalf[index]} />
+                    <SwiperSlide key={firstHalf[index].id} className="p-1">
+                      <SpecialProductsCard id={firstHalf[index].id} margin="20px" data={firstHalf[index]} />
+                      <SpecialProductsCard id={secondHalf[index].id} data={secondHalf[index]} />
                     </SwiperSlide>
                   </>
                 );
@@ -404,7 +411,7 @@ function Home() {
       {/* start Popular Products */}
       <section className="home-wrapper-2 py-5">
         <div className="container">
-          <PopularProductsCard />
+          <PopularProductsCard products={products} />
         </div>
       </section>
       {/* end Popular Products */}

@@ -1,0 +1,178 @@
+.home-account {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    background-color: white;
+}
+
+.home-account p {
+    font-weight: 400;
+}
+
+.home-account p span {
+    font-weight: 200;
+}
+
+.registerCard {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(229, 230, 233, 0.623);
+    padding: 50px 100px;
+}
+
+.registerCard form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    border-radius: 28px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    width: fit-content;
+}
+
+h4 {
+    color: rgb(121, 117, 117);
+    margin-bottom: 30px;
+}
+
+.input-groupp {
+    margin-bottom: 25px;
+    line-height: 30px;
+}
+
+.input-groupp input {
+    width: 600px;
+    background-color: rgba(233, 233, 233, 0.596);    
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+input::placeholder {
+    color: rgb(146, 145, 145);
+    letter-spacing: 1px;
+}
+
+.error-message {
+    color: red;
+    font-size: 15px;
+    text-align: start;
+    width: 650px;
+}
+
+.btnRegister {
+    padding: 15px 40px;
+    background-color: #232f3e;
+    color: rgb(255, 255, 255);
+    border-radius: 30px;
+    border: none;
+    font-size: 20px;
+    text-align: start;
+    margin-bottom: -15px;
+    margin-top: -20px;
+}
+
+.btnRegister:hover {
+    background-color: rgba(255, 166, 0, 0.753);
+}
+
+@media (max-width: 767px) {
+    .registerCard form {
+            padding: 10px 30px;
+    }
+        .registerCard {
+            padding: 40px 70px;
+        }
+}
+
+@media (max-width: 720px) {
+    .registerCard form {
+        padding: 10px 25px;
+    }
+        .input-groupp input {
+        width: 550px;
+    }
+    .registerCard {
+        padding: 40px 70px;
+    }
+}
+@media (max-width: 660px) {
+    .registerCard form {
+        padding: 10px 20px;
+    }
+
+    .input-groupp input {
+        width: 500px;
+    }
+
+    .registerCard {
+        padding: 40px 70px;
+    }
+}
+
+@media (max-width: 580px) {
+    .registerCard form {
+        padding: 10px 15px;
+    }
+
+    .input-groupp input {
+        width: 450px;
+    }
+
+    .registerCard {
+        padding: 40px 70px;
+    }
+        .btnRegister {
+
+            margin-bottom: -15px;
+            margin-top: -15px;
+        }
+}
+@media (max-width: 500px) {
+    .registerCard form {
+        padding: 10px 12px;
+    }
+
+    .input-groupp input {
+        width: 400px;
+        padding: 9px;
+        font-size: 17px;
+    }
+input::placeholder {
+    color: rgb(146, 145, 145);
+    letter-spacing: 1px;
+    font-size: 18px;
+}
+    .registerCard {
+        padding: 40px 70px;
+    }
+}
+@media (max-width: 460px) {
+.registerCard form {
+        padding: 10px 10px;
+    }
+
+    .input-groupp input {
+        width: 350px;
+        padding: 6px;
+    }
+
+    .registerCard {
+        padding: 40px 70px;
+    }
+}
+@media (max-width: 400px) {
+    .registerCard form {
+        padding: 10px 10px;
+    }
+
+    .input-groupp input {
+        width: 320px;
+    }
+
+    .registerCard {
+        padding: 40px 60px;
+    }
+}

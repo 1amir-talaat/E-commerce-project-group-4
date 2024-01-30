@@ -9,7 +9,7 @@ const ProductSubImage = sequelize.define("ProductSubImage", {
     allowNull: false,
   },
   imageUrl: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false,
   },
   productId: {

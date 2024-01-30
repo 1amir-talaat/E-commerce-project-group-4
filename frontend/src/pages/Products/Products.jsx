@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import products from "../data.json";
 import SideBar from "./SideBar/SideBar";
-
 import "./prodects.css";
 import Collection from "./Collection/Collection";
-import { useLocation, useNavigate, useNavigation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useProduct } from "../../context/ProductsContext";
 
-function Products(props) {
+function Products() {
+  const { products } = useProduct();
+
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const comingData = JSON.parse(queryParams.get("data"));
@@ -23,8 +24,6 @@ function Products(props) {
     sale: 0,
   };
 
-  console.log(comingData);
-
   const [filters, setFilters] = useState({
     ...defaultFilters,
     ...comingData,
@@ -40,14 +39,12 @@ function Products(props) {
     });
   }, [location.search]);
 
-  console.log(filters);
-
   let categories = [];
   let brands = [];
   let inStock = 0;
   let outOfStock = 0;
 
-  products.map((item) => {
+  products.forEach((item) => {
     if (!categories.includes(item.categorie)) {
       categories.push(item.categorie);
     }
@@ -70,34 +67,27 @@ function Products(props) {
     outOfStock,
   };
 
-  console.log(filters);
-
   const categoriesFilter = products.filter((product) => {
-    return filters.categories.length == 0 || filters.categories.includes(product.categorie);
+    return filters.categories.length === 0 || filters.categories.includes(product.categorie);
   });
 
   const brandFilter = products.filter((product) => {
-    return filters.brand.length == 0 || filters.brand.includes(product.brand);
+    return filters.brand.length === 0 || filters.brand.includes(product.brand);
   });
 
   const stockFilter = products.filter((product) => {
-    if (filters.stock == null) {
+    if (filters.stock === null) {
       return true;
     } else if (filters.stock) {
-      if (product.stock >= 1) {
-        return true;
-      }
-      return false;
+      return product.stock >= 1;
     } else if (!filters.stock) {
-      if (product.stock <= 0) {
-        return true;
-      }
-      return false;
+      return product.stock <= 0;
     }
+    return false;
   });
 
   const priceFilter = products.filter((product) => {
-    if (filters.price.min == 0 && filters.price.max == 0) {
+    if (filters.price.min === 0 && filters.price.max === 0) {
       return true;
     }
 
@@ -105,30 +95,24 @@ function Products(props) {
       return true;
     }
 
-    const price = +product.price.replace("$", "").split(".")[0];
+    const price = +product.price;
 
-    if (price >= +filters.price.min && price <= +filters.price.max) {
-      return true;
-    }
-
-    return false;
+    return price >= +filters.price.min && price <= +filters.price.max;
   });
 
   const rateFilter = products.filter((product) => {
-    if (product.rate == "") {
-      product.rate = 0;
-    }
-
-    if (product.rate >= filters.rate) {
+    if (filters.rating === 0) {
       return true;
     }
 
-    return false;
+    return product.rating >= filters.rate;
   });
 
   const filteredProducts = categoriesFilter.filter(
-    (value) => rateFilter.includes(value) && brandFilter.includes(value) && priceFilter.includes(value) && stockFilter.includes(value)
+    (value) => brandFilter.includes(value) && stockFilter.includes(value) && priceFilter.includes(value) && rateFilter.includes(value)
   );
+
+  console.log(rateFilter);
 
   return (
     <>

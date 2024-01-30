@@ -21,6 +21,7 @@
     "react-router-dom": "^6.21.3",
     "react-select": "^5.8.0",
     "react-timer-hook": "^3.0.7",
+    "sweetalert2": "^11.10.4",
     "swiper": "^11.0.5"
   },
   "devDependencies": {

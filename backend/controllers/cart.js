@@ -1,4 +1,5 @@
 import Cart from "../models/Cart.js";
+import Product from "../models/Products.js";
 
 export const addToCart = async (req, res) => {
   const { productId, quantity, userId } = req.body;
@@ -20,10 +21,16 @@ export const addToCart = async (req, res) => {
 };
 
 export const getCartItems = async (req, res) => {
-  const { userId } = req.params;
-
   try {
-    const cartItems = await Cart.findAll({ where: { userId } });
+    const cartItems = await Cart.findAll({
+      include: [
+        {
+          model: Product,
+          attributes: ["id", "title", "description", "price", "stock", "mainImage", "brand", "rating"],
+        },
+      ],
+    });
+
     res.status(200).json(cartItems);
   } catch (error) {
     console.error("Error fetching cart items:", error);
@@ -33,7 +40,7 @@ export const getCartItems = async (req, res) => {
 
 export const removeFromCart = async (req, res) => {
   const { cartItemId } = req.params;
-  const {userId} = req.body;
+  const { userId } = req.body;
 
   try {
     const cartItem = await Cart.findOne({ where: { id: cartItemId, userId } });

@@ -1,5 +1,3 @@
-// SideBar.js
-
 import React, { useEffect, useRef, useState } from "react";
 import { Form } from "react-bootstrap";
 
@@ -114,20 +112,13 @@ function SideBar(props) {
         <div className="filter-box-body ">
           <form>
             <div onClick={() => setStock(true)} className="d-flex gap-12 align-items-center">
-              <input type="radio" name="stock" id="in-stock" checked={stock} onChange={() => setStock(true)} />
+              <input type="radio" name="stock" id="in-stock" onChange={() => setStock(true)} />
               <label className="category stock" htmlFor="in-stock">
                 in stock ({props.data.inStock})
               </label>
             </div>
             <div onClick={() => setStock(false)} className="d-flex gap-12 align-items-center">
-              <input
-                type="radio"
-                name="stock"
-                id="out-stock"
-                disabled={props.data.outOfStock <= 0 ? true : false}
-                checked={!stock}
-                onChange={() => setStock(false)}
-              />
+              <input type="radio" name="stock" id="out-stock" disabled={props.data.outOfStock <= 0 ? true : false} onChange={() => setStock(false)} />
               <label className="category stock" htmlFor="out-stock">
                 out of stock ({props.data.outOfStock})
               </label>

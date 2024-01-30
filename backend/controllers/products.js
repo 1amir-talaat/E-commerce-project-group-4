@@ -17,6 +17,7 @@ export const getAllProducts = async (req, res) => {
         },
       ],
     });
+
     res.json(products);
   } catch (error) {
     handleError(res, error);
@@ -39,7 +40,7 @@ export const getProductDetails = async (req, res) => {
 };
 
 export const createProduct = async (req, res) => {
-  const { title, description, price, stock, mainImage, rating, subImage } = req.body;
+  const { title, description, categorie, price, stock, mainImage, brand, rating, ratingCount, sale, saleEndDate, subImage } = req.body;
 
   try {
     const newProduct = await Product.create({
@@ -48,7 +49,12 @@ export const createProduct = async (req, res) => {
       price,
       stock,
       mainImage,
+      brand,
       rating,
+      categorie,
+      ratingCount,
+      sale,
+      saleEndDate: saleEndDate == "null" ? null : saleEndDate,
     });
 
     if (subImage && subImage.length > 0) {

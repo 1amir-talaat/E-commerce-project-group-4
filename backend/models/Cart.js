@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/Connection.js";
+import Product from "./Products.js"; 
 
 const Cart = sequelize.define("Cart", {
   id: {
@@ -22,6 +23,8 @@ const Cart = sequelize.define("Cart", {
     defaultValue: 1,
   },
 });
+
+Cart.belongsTo(Product, { foreignKey: "productId" });
 
 (async () => {
   try {
