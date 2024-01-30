@@ -52,3 +52,27 @@ img {
 a {
   color: inherit;
 }
+.successImg{
+  width: 200px;
+  mix-blend-mode: multiply;
+}
+.backkhara{
+  background-color: #f4f3f3;
+  /* min-height: calc(100vh - 400px); */
+  mix-blend-mode: multiply;
+}
+.successdiv{
+  padding: 140px 0;
+}
+.btn-2 {
+  color: white !important;
+  padding: 4px 17px;
+  margin-top: 10px  ;
+  background: #fbae50;
+}
+
+.btn-2:hover {
+  background: #516288;
+  color: black;
+  transition: all 0.3s;
+}

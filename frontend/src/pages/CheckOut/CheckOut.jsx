@@ -8,8 +8,10 @@ import credit from "../../assets/images/360_F_307140983_MDNd4Mtv5qgd3LAUK40ru1EP
 import Footer from "../../components/footer/Footer.jsx";
 import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext.jsx";
+import { useNavigate } from "react-router-dom";
 
 function CheckOut() {
+  const navigate = useNavigate();
   const { items, total } = useCart();
   console.log(items, total);
   console.log(items);
@@ -178,8 +180,7 @@ function CheckOut() {
   const renderButton = () => {
     if (paymentType == "credit") {
       if (month != "" && year != "" && (isCardValid != true || isCardValid != "0000000000000000") && cvv != "") {
-        return <button className="orderbtn">Place Order</button>;
-      } else {
+        return <button onClick={() => { navigate("/ordersuccess") }} className="orderbtn">Place Order</button>;      } else {
         return (
           <button className="orderbtn" style={{ background: "grey", pointerEvents: "none" }} type="disabled">
             Place Order
@@ -187,7 +188,7 @@ function CheckOut() {
         );
       }
     } else {
-      return <button className="orderbtn">Place Order</button>;
+      return <button onClick={() => { navigate("/ordersuccess")}} className="orderbtn">Place Order</button>;
     }
   };
 
@@ -247,6 +248,7 @@ function CheckOut() {
             <p className="titleSection">Your Order</p>
             <div className="seccontainer order">
               {items.map((item) => {
+                console.log(item)
                 return (
                   <div className={`${item.title} item`} key={item.id}>
                     <div className="productcontainer">
@@ -257,7 +259,7 @@ function CheckOut() {
                         >
                           {item.quantity}
                         </span>
-                        <img src={watch} alt="Can't Find the source" />
+                        <img src={item.Product.mainImage} alt="Can't Find the source" />
                       </div>
                       <div className="dataOfProduct">
                         <p>{item.Product.brand}</p>

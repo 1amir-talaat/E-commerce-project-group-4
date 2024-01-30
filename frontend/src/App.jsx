@@ -9,7 +9,8 @@ import { useAuth } from "./context/AuthContext";
 import Login from "./pages/Login/Login";
 import Wishlist from "./pages/WishList/Wishlist";
 import Productsdetails from "./pages/ProductInfo/ProductInfo";
-
+import Error from "./pages/Error";
+import Successfullypage from "./pages/Successfullypage";
 function App() {
   const { isAuthenticated } = useAuth();
   return (
@@ -22,8 +23,11 @@ function App() {
         <Route path="login" element={<Login />} />
         {isAuthenticated ? <Route path="wishList" element={<Wishlist />} /> : <Route path="wishList" element={<Navigate to="/login" />} />}
         {isAuthenticated ? <Route path="cart" element={<Cart />} /> : <Route path="cart" element={<Navigate to="/login" />} />}
+        <Route path="*" element={<Error />} />
+        <Route path="ordersuccess" element={<Successfullypage />} />
       </Route>
       {isAuthenticated ? <Route path="/check-out" element={<CheckOut />} /> : <Route path="/check-out" element={<Navigate to="/login" />} />}
+
     </Routes>
   );
 }
